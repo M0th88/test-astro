@@ -1,0 +1,46 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/global.css";
+import Header from "../components/header.astro";
+import Hero from "../components/hero.astro";
+import Carousel from "../components/carousel.astro";
+import Planes from "../components/planes.astro";
+import Cobertura from "../components/cobertura.astro";
+import Contacto from "../components/contacto.astro";
+import Footer from "../components/footer.astro";
+import Scripts from "../components/scripts.astro";
+import Pagos from "../components/pagos.astro";
+import DividerBar from "../components/dividerbar.astro";
+
+
+---
+
+<BaseLayout title="Linknet - Internet rápido en Temuco y Rucahue">
+  <head slot="head">
+    <meta property="og:title" content="Linknet - Internet rápido y estable" />
+    <meta
+      property="og:description"
+      content="Conexión de alta velocidad para Temuco y Rucahue. Planes desde $19.990."
+    />
+    <meta
+      property="og:image"
+      content="public/images/img1.png"
+    />
+    <meta property="og:url" content="https://linknetspa.cl" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  </head>
+
+  <Header />
+  <Carousel />
+  <DividerBar />
+  <Hero />
+  <Planes />
+  <DividerBar />
+  <Pagos />
+  <Cobertura />
+  <DividerBar />
+  <Contacto />
+  <Footer />
+  <Scripts />
+</BaseLayout>

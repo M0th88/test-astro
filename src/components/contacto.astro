@@ -1,0 +1,77 @@
+<section id="contacto" class="bg-white py-16 px-4 dark:bg-gray-900 dark:text-white">
+    <div class="max-w-xl mx-auto text-center transition-all duration-700 animate-fade-in">
+      <h2 class="text-3xl font-bold text-linknet mb-6">
+        Contáctanos por WhatsApp
+      </h2>
+      <p class="text-gray-600 mb-8 dark:text-gray-600">
+        ¿Tienes preguntas o deseas contratar un plan? Escríbenos directamente por WhatsApp.
+      </p>
+  
+      <form id="form-wsp" class="grid gap-4 text-left">
+        <input
+          class="p-3 border rounded-xl w-full focus:outline-none focus:ring-2 focus:ring-linknet-accent"
+          type="text"
+          placeholder="Tu nombre"
+          id="nombre"
+          required
+        />
+        <input
+          class="p-3 border rounded-xl w-full focus:outline-none focus:ring-2 focus:ring-linknet-accent"
+          type="email"
+          placeholder="Tu correo"
+          id="correo"
+          required
+        />
+        <textarea
+          class="p-3 border rounded-xl w-full focus:outline-none focus:ring-2 focus:ring-linknet-accent"
+          rows="4"
+          placeholder="Mensaje"
+          id="mensaje"
+          required
+        ></textarea>
+  
+        <button
+          type="submit"
+          class="flex items-center justify-center gap-2 bg-green-500 text-white px-6 py-3 rounded-xl hover:bg-green-600 transition font-medium"
+        >
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+            alt="WhatsApp"
+            class="w-6 h-6"
+          />
+          Enviar por WhatsApp
+        </button>
+      </form>
+    </div>
+  
+    <style>
+      @keyframes fade-in {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .animate-fade-in {
+        animation: fade-in 1s ease-out;
+      }
+    </style>
+  
+    <script is:inline>
+      const form = document.getElementById("form-wsp");
+      form?.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const nombre = document.getElementById("nombre").value;
+        const correo = document.getElementById("correo").value;
+        const mensaje = document.getElementById("mensaje").value;
+  
+        const texto = `Hola, soy ${nombre} (${correo}). ${mensaje}`;
+        const url = `https://wa.me/56927885138?text=${encodeURIComponent(texto)}`;
+        window.open(url, "_blank");
+      });
+    </script>
+  </section>
+  

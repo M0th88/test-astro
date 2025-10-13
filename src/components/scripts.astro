@@ -1,0 +1,48 @@
+<script is:inline>
+  // Preloader
+
+  // Carrusel
+  window.addEventListener("DOMContentLoaded", () => {
+    const track = document.getElementById("carousel-track");
+    const nextBtn = document.getElementById("nextBtn");
+    const prevBtn = document.getElementById("prevBtn");
+    const totalSlides = track?.children.length || 0;
+    let currentIndex = 0;
+    let interval;
+
+    function updateSlide() {
+      if (track) {
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+      }
+    }
+
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % totalSlides;
+      updateSlide();
+      resetInterval();
+    }
+
+    function prevSlide() {
+      currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+      updateSlide();
+      resetInterval();
+    }
+
+    function startInterval() {
+      interval = setInterval(nextSlide, 7000);
+    }
+
+    function resetInterval() {
+      clearInterval(interval);
+      startInterval();
+    }
+
+    if (nextBtn && prevBtn) {
+      nextBtn.addEventListener("click", nextSlide);
+      prevBtn.addEventListener("click", prevSlide);
+    }
+
+    updateSlide();
+    startInterval();
+  });
+</script>

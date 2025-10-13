@@ -1,0 +1,52 @@
+---
+import Botonwsp from "../components/botonwsp.astro";
+import Preloader from "../components/preloader.astro";
+const { title = "Linknet" } = Astro.props;
+---
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+
+    <slot name="head" />
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-linknet-light dark:bg-gray-900 text-gray-900 dark:text-white font-sans"
+  >
+    <Preloader />
+    <div
+      id="main-content"
+      class="opacity-0 transition-opacity duration-500 ease-in-out"
+    >
+      <slot />
+      <Botonwsp />
+    </div>
+    <script is:inline>
+      window.addEventListener("load", () => {
+        const preloader = document.getElementById("preloader");
+        const mainContent = document.getElementById("main-content");
+
+        if (preloader && mainContent) {
+          preloader.classList.add("opacity-0", "pointer-events-none");
+
+          setTimeout(() => {
+            mainContent.classList.remove("opacity-0");
+            window.scrollTo({ top: 0, behavior: "smooth" });
+            preloader.remove();
+          }, 300);
+        } else if (mainContent) {
+          mainContent.classList.remove("opacity-0");
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      });
+    </script>
+  </body>
+</html>
