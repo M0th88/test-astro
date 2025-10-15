@@ -1,5 +1,5 @@
 {
-  "name": "linknet",
+  "name": "forestal-test",
   "type": "module",
   "scripts": {
     "dev": "astro dev",
@@ -14,5 +14,11 @@
   },
   "dependencies": {
     "lucide-static": "^0.487.0"
-  }
+  },
+  "description": "Este proyecto es un sitio web para **Linknet**, un proveedor de servicios de internet en Temuco y Rucahue.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
