@@ -4,17 +4,16 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Nueva paleta de colores basada en la tarjeta
         'brand': {
-          'primary': '#4a4a4a', // Gris oscuro de fondo
-          'secondary': '#333333', // Un gris un poco más claro
-          'accent': '#d93644',   // Rojo del logo
-          'text': '#ffffff',      // Color de texto principal
+          'primary': '#4a4a4a',
+          'secondary': '#333333',
+          'accent': '#d93644',
+          'text': '#ffffff',
         },
       },
       fontFamily: {
-        sans: ["Montserrat", "sans-serif"],
-        serif: ["Roboto Slab", "serif"],
+        sans: ["Montserrat", "sans-serif"],    // Para Títulos y Header
+        serif: ["Roboto Slab", "serif"],      // Para Párrafos
       },
     },
   },

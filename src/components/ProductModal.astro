@@ -1,0 +1,79 @@
+---
+const { product } = Astro.props;
+const modalId = `modal-${product.id}`;
+---
+<div 
+  id={modalId}
+  class="modal-overlay fixed inset-0 z-50 bg-black/70 flex items-center justify-center p-4 transition-opacity duration-300 opacity-0 invisible"
+>
+  <div 
+    class="modal-content bg-white rounded-lg shadow-xl max-w-3xl w-full mx-auto relative transform transition-all duration-300 scale-95 opacity-0"
+    onclick="event.stopPropagation()"
+  >
+    <button 
+      class="modal-close-btn absolute -top-4 -right-4 h-10 w-10 bg-white rounded-full text-brand-secondary text-3xl leading-none flex items-center justify-center shadow-lg hover:text-brand-accent"
+      aria-label="Cerrar modal"
+    >&times;</button>
+    
+    <div class="grid md:grid-cols-2 gap-6 p-6">
+      <div class="flex items-center justify-center">
+        <img src={product.img} alt={product.nombre} class="w-full h-auto max-h-[400px] object-contain rounded-md" />
+      </div>
+      <div class="flex flex-col justify-center text-left">
+        <h3 class="text-2xl font-bold font-sans text-brand-secondary mb-2">{product.nombre}</h3>
+        <p class="text-gray-500 font-serif italic mb-4">{product.descripcion}</p>
+        {product.detalles && (
+          <div class="text-gray-700 font-serif space-y-2">
+            <p>{product.detalles}</p>
+          </div>
+        )}
+        <button
+          class="modal-close-btn bg-brand-accent text-white font-bold py-2 px-6 rounded-lg hover:bg-red-700 transition-colors font-sans mt-6 self-start"
+        >
+          Cerrar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script define:vars={{ modalId, productId: product.id }}>
+  document.addEventListener('DOMContentLoaded', () => {
+    const trigger = document.querySelector(`[data-modal-trigger-for="${productId}"]`);
+    const modal = document.getElementById(modalId);
+    if (!trigger || !modal) return;
+
+    const modalContent = modal.querySelector('.modal-content');
+    const closeButtons = modal.querySelectorAll('.modal-close-btn');
+
+    function openModal() {
+      document.body.style.overflow = 'hidden';
+      modal.classList.remove('invisible', 'opacity-0');
+      setTimeout(() => {
+        modalContent.classList.remove('opacity-0', 'scale-95');
+      }, 50);
+    }
+
+    function closeModal() {
+      modalContent.classList.add('opacity-0', 'scale-95');
+      setTimeout(() => {
+        modal.classList.add('invisible', 'opacity-0');
+        document.body.style.overflow = '';
+      }, 300);
+    }
+
+    trigger.addEventListener('click', openModal);
+    closeButtons.forEach(btn => btn.addEventListener('click', closeModal));
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        closeModal();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !modal.classList.contains('invisible')) {
+        closeModal();
+      }
+    });
+  });
+</script>

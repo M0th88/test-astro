@@ -1,0 +1,57 @@
+---
+// He definido el contenido aquí para que sea más fácil de editar
+const info = {
+  tituloPrincipal: "Canahuatexport Ltda.",
+  quienesSomos: {
+    titulo: "Quiénes Somos",
+    texto: "Somos una empresa chilena que se dedica a la elaboración y comercialización de productos de pino Radiata certificados bajo los más altos estándares internacionales, de acuerdo con una visión de vanguardia y compromiso con el medio ambiente y su entorno."
+  },
+  mision: {
+    titulo: "Misión",
+    texto: "Ser una empresa remanufacturera de maderas de Pino radiata, con gran capacidad de adaptación de nuestros sistemas, para satisfacer las necesidades de nuestros clientes, logrando concentrar nuestros esfuerzos en seguridad, innovación, otorgando productos de gran calidad."
+  },
+  vision: {
+    titulo: "Visión",
+    texto: "Llegar a ser una empresa consolidada y sostenible en el tiempo con capacidad de adaptación a nuestros clientes, con reconocimiento en el mercado nacional e internacional y con elaboración de productos con un mayor valor agregado."
+  }
+}
+---
+
+<section
+  id="empresa"
+  class="relative py-20 md:py-32 bg-cover bg-center bg-fixed"
+  style="background-image: url('/images/fibra3.jpg');"
+>
+  {/* Capa oscura sobre el fondo para mejorar la legibilidad del texto */}
+  <div class="absolute inset-0 bg-brand-secondary opacity-50"></div>
+
+  <div class="relative max-w-4xl mx-auto px-6 scroll-animate-item">
+    {/* Contenedor semitransparente para el texto */}
+    <div class="bg-black/70 p-8 md:p-12 rounded-lg text-white backdrop-blur-sm">
+      <h2 class="text-3xl md:text-4xl font-bold font-sans text-center mb-10">{info.tituloPrincipal}</h2>
+
+      <div class="space-y-8">
+        <div>
+          <h3 class="text-xl font-bold font-sans inline-block">
+            <span class="bg-brand-accent px-2 py-1">{info.quienesSomos.titulo}</span>
+          </h3>
+          <p class="mt-3 font-serif text-gray-200 leading-relaxed">{info.quienesSomos.texto}</p>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-bold font-sans inline-block">
+            <span class="bg-brand-accent px-2 py-1">{info.mision.titulo}</span>
+          </h3>
+          <p class="mt-3 font-serif text-gray-200 leading-relaxed">{info.mision.texto}</p>
+        </div>
+        
+        <div>
+          <h3 class="text-xl font-bold font-sans inline-block">
+            <span class="bg-brand-accent px-2 py-1">{info.vision.titulo}</span>
+          </h3>
+          <p class="mt-3 font-serif text-gray-200 leading-relaxed">{info.vision.texto}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

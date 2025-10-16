@@ -10,21 +10,38 @@ const { title = "Forestal Fátima" } = Astro.props;
     <title>{title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto+Slab:wght@400&display=swap" rel="stylesheet">
     <slot name="head" />
     <style>
-      html {
-        scroll-behavior: smooth;
-}
+      html { scroll-behavior: smooth; }
     </style>
   </head>
-  <body
-    class="bg-white text-gray-900 font-sans"
-  >
+  <body class="bg-white text-gray-900">
     <div>
       <slot />
       <Botonwsp />
     </div>
+
+    {/* SCRIPT GLOBAL PARA LA ANIMACIÓN DE SCROLL */}
+    <script is:inline>
+      document.addEventListener("DOMContentLoaded", () => {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+            } else {
+              entry.target.classList.remove('is-visible');
+            }
+          });
+        }, {
+          threshold: 0.10
+        });
+
+        const itemsToAnimate = document.querySelectorAll('.scroll-animate-item');
+        itemsToAnimate.forEach(item => {
+          observer.observe(item);
+        });
+      });
+    </script>
   </body>
 </html>

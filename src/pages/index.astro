@@ -5,41 +5,42 @@ import Header from "../components/header.astro";
 import Hero from "../components/hero.astro";
 import Carousel from "../components/carousel.astro";
 import Planes from "../components/planes.astro";
-import Cobertura from "../components/cobertura.astro";
+import Info from "../components/info.astro";
 import Contacto from "../components/contacto.astro";
 import Footer from "../components/footer.astro";
 import Scripts from "../components/scripts.astro";
-import Pagos from "../components/pagos.astro";
+import Productos from "../components/productos.astro";
 import DividerBar from "../components/dividerbar.astro";
+import Procesos from "../components/procesos.astro";
 
 
 ---
 
-<BaseLayout title="Linknet - Internet rápido en Temuco y Rucahue">
-  <head slot="head">
-    <meta property="og:title" content="Linknet - Internet rápido y estable" />
+<BaseLayout  title="Canahuatexport - Maderas de Calidad y Exportación">
+ <head slot="head">
+    <meta property="og:title" content="Canahuatexport - Maderas de Calidad y Exportación" />
     <meta
       property="og:description"
-      content="Conexión de alta velocidad para Temuco y Rucahue. Planes desde $19.990."
+      content="Empresa forestal dedicada a la elaboración y comercialización de productos de pino Radiata certificados, con un alto compromiso con el medio ambiente."
     />
     <meta
       property="og:image"
-      content="public/images/img1.png"
+      content="/images/fibra1.jpg"
     />
-    <meta property="og:url" content="https://linknetspa.cl" />
+    <meta property="og:url" content="https://www.canahuatexport.cl" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-  </head>
-
+</head>
   <Header />
   <Carousel />
   <!-- <DividerBar /> -->
   <Hero />
-  <Planes />
-  <DividerBar />
-  <Pagos />
-  <Cobertura />
-  <DividerBar />
+  <Productos/>
+  <!-- <Planes />  -->
+  <!-- <DividerBar /> -->
+  <Info/>
+  <Procesos/>
+  <!-- <DividerBar /> -->
   <Contacto />
   <Footer />
   <Scripts />

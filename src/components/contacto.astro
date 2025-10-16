@@ -1,72 +1,88 @@
-<section id="contacto" class="bg-white py-20 px-4 dark:bg-gray-900 dark:text-white">
-  <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-12 transition-all duration-700 animate-fade-in">
-    <!-- Columna izquierda: Imagen -->
-    <div class="flex-1 flex justify-center">
-      <img
-        src="/images/contacto-oficina.jpg"
-        alt="Oficina Forestal"
-        class="rounded-2xl shadow-lg w-full max-w-xs md:max-w-sm object-cover"
-      />
+---
+// Información de contacto para que sea fácil de editar
+const info = {
+  telefonos: ["+56 9 9991 3752"],
+  direccion: "Los Diaguitas 770 - Freire - Araucanía, Chile",
+  emailGeneral: "mauricio@empresasmc.cl",
+  emailCadena: "cadena@canahuatexport.cl" // Email de ejemplo
+}
+---
+
+<section
+  id="contacto"
+  class="relative py-20 md:py-32 bg-cover bg-center"
+  style="background-image: url('/images/fibra1.jpg');"
+>
+  {/* Capa oscura sobre el fondo para mejorar la legibilidad del texto */}
+  <div class="absolute inset-0 bg-black/60"></div>
+
+  <div class="relative max-w-6xl mx-auto px-6 text-white scroll-animate-item">
+    {/* Título de la sección */}
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold font-sans uppercase">Contacto</h2>
+      <p class="mt-4 text-lg text-gray-300 font-serif max-w-2xl mx-auto">
+        Ante cualquier consulta, escríbenos. Estaremos encantados en responder.
+      </p>
     </div>
-    <!-- Columna derecha: Información de contacto -->
-    <div class="flex-1">
-      <h2 class="text-3xl font-bold text-[#295234] mb-6 font-sans">
-        Información de Contacto
-      </h2>
-      <ul class="mb-8 space-y-4 text-lg font-sans">
-        <li>
-          <span class="font-bold text-[#295234]">Teléfonos:</span>
-          <div class="ml-2">
-            <a href="tel:+56927885138" class="hover:underline text-[#295234]">+56 9 2788 5138</a><br />
-            <a href="tel:+56212345678" class="hover:underline text-[#295234]">+56 2 1234 5678</a>
+
+    <div class="grid md:grid-cols-2 gap-12 items-start">
+      
+      <form action="#" method="POST" class="space-y-6">
+        <div>
+          <label for="name" class="sr-only">Su nombre</label>
+          <input type="text" id="name" name="name" placeholder="Su nombre *" required class="w-full bg-white/90 text-gray-800 p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-accent font-serif" />
+        </div>
+        <div>
+          <label for="email" class="sr-only">Correo electrónico</label>
+          <input type="email" id="email" name="email" placeholder="Correo electrónico *" required class="w-full bg-white/90 text-gray-800 p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-accent font-serif" />
+        </div>
+        <div>
+          <label for="message" class="sr-only">Mensaje</label>
+          <textarea id="message" name="message" rows="5" placeholder="Mensaje *" required class="w-full bg-white/90 text-gray-800 p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-accent font-serif"></textarea>
+        </div>
+        <div>
+          <button type="submit" class="w-full bg-brand-accent text-white font-bold py-3 px-6 rounded-md hover:bg-red-700 transition-colors font-sans text-lg">
+            Enviar Mensaje
+          </button>
+        </div>
+      </form>
+
+      <div class="bg-black/50 p-8 rounded-lg backdrop-blur-sm">
+        <h3 class="text-2xl font-bold font-sans mb-8">Información de contacto</h3>
+        <div class="space-y-6">
+          
+          <div>
+            <h4 class="text-md font-sans inline-block mb-2">
+              <span class="bg-brand-accent px-2 py-1">Teléfonos</span>
+            </h4>
+            {info.telefonos.map(tel => (
+              <p class="font-serif text-gray-200">{tel}</p>
+            ))}
           </div>
-        </li>
-        <li>
-          <span class="font-bold text-[#295234]">Dirección:</span>
-          <div class="ml-2">
-            Camino Forestal 1234, Ciudad, Región, Chile
+
+          <div>
+            <h4 class="text-md font-sans inline-block mb-2">
+              <span class="bg-brand-accent px-2 py-1">Dirección</span>
+            </h4>
+            <p class="font-serif text-gray-200">{info.direccion}</p>
           </div>
-        </li>
-        <li>
-          <span class="font-bold text-[#295234]">Correo general:</span>
-          <div class="ml-2">
-            <a href="mailto:contacto@forestal.cl" class="hover:underline text-[#295234]">contacto@forestal.cl</a>
+          
+          <div>
+            <h4 class="text-md font-sans inline-block mb-2">
+              <span class="bg-brand-accent px-2 py-1">Contacto general</span>
+            </h4>
+            <a href={`mailto:${info.emailGeneral}`} class="font-serif text-gray-200 hover:text-brand-accent transition-colors block">{info.emailGeneral}</a>
           </div>
-        </li>
-        <li>
-          <span class="font-bold text-[#295234]">Cadena de Custodia:</span>
-          <div class="ml-2">
-            <a href="mailto:cadena@forestal.cl" class="hover:underline text-[#295234]">cadena@forestal.cl</a>
+
+          <div>
+            <h4 class="text-md font-sans inline-block mb-2">
+              <span class="bg-brand-accent px-2 py-1">Cadena de custodia</span>
+            </h4>
+            <a href={`mailto:${info.emailCadena}`} class="font-serif text-gray-200 hover:text-brand-accent transition-colors block">{info.emailCadena}</a>
           </div>
-        </li>
-      </ul>
-      <div class="flex gap-4 mt-6">
-        <a href="https://wa.me/56927885138" target="_blank" class="flex items-center gap-2 bg-green-500 text-white px-5 py-3 rounded-xl hover:bg-green-600 transition font-medium font-sans">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="w-6 h-6" />
-          WhatsApp
-        </a>
-        <a href="mailto:contacto@forestal.cl" class="flex items-center gap-2 bg-[#295234] text-white px-5 py-3 rounded-xl hover:bg-[#1e3a24] transition font-medium font-sans">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12H8m8 0a4 4 0 11-8 0 4 4 0 018 0zm0 0v4m0-4V8" />
-          </svg>
-          Email
-        </a>
+
+        </div>
       </div>
     </div>
   </div>
-  <style>
-    @keyframes fade-in {
-      0% {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    .animate-fade-in {
-      animation: fade-in 1s ease-out;
-    }
-  </style>
 </section>
