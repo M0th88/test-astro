@@ -1,33 +1,63 @@
 <script is:inline>
-  // Preloader
-
-  // Carrusel
   window.addEventListener("DOMContentLoaded", () => {
     const track = document.getElementById("carousel-track");
     const nextBtn = document.getElementById("nextBtn");
     const prevBtn = document.getElementById("prevBtn");
-    const totalSlides = track?.children.length || 0;
+    const dotsContainer = document.getElementById("carousel-dots");
+    
+    if (!track || !nextBtn || !prevBtn || !dotsContainer) return;
+
+    const slides = Array.from(track.children);
+    const totalSlides = slides.length;
     let currentIndex = 0;
     let interval;
 
-    function updateSlide() {
-      if (track) {
-        track.style.transform = `translateX(-${currentIndex * 100}%)`;
-      }
+    // --- Funciones del carrusel ---
+    function updateCarousel() {
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+      updateDots();
     }
 
     function nextSlide() {
       currentIndex = (currentIndex + 1) % totalSlides;
-      updateSlide();
+      updateCarousel();
       resetInterval();
     }
 
     function prevSlide() {
       currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-      updateSlide();
+      updateCarousel();
       resetInterval();
     }
 
+    // --- Lógica de los puntos de navegación ---
+    function createDots() {
+      for (let i = 0; i < totalSlides; i++) {
+        const dot = document.createElement("button");
+        dot.classList.add("w-3", "h-3", "rounded-full", "bg-white/50", "transition-colors");
+        dot.addEventListener("click", () => {
+          currentIndex = i;
+          updateCarousel();
+          resetInterval();
+        });
+        dotsContainer.appendChild(dot);
+      }
+    }
+
+    function updateDots() {
+      const dots = Array.from(dotsContainer.children);
+      dots.forEach((dot, index) => {
+        if (index === currentIndex) {
+          dot.classList.add("bg-white");
+          dot.classList.remove("bg-white/50");
+        } else {
+          dot.classList.remove("bg-white");
+          dot.classList.add("bg-white/50");
+        }
+      });
+    }
+
+    // --- Intervalo de auto-desplazamiento ---
     function startInterval() {
       interval = setInterval(nextSlide, 7000);
     }
@@ -37,12 +67,12 @@
       startInterval();
     }
 
-    if (nextBtn && prevBtn) {
-      nextBtn.addEventListener("click", nextSlide);
-      prevBtn.addEventListener("click", prevSlide);
-    }
-
-    updateSlide();
+    // --- Inicialización ---
+    nextBtn.addEventListener("click", nextSlide);
+    prevBtn.addEventListener("click", prevSlide);
+    
+    createDots();
+    updateCarousel(); // Llama para establecer el estado inicial
     startInterval();
   });
 </script>

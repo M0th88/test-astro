@@ -1,39 +1,87 @@
-<section class="relative w-full h-[300px] md:h-[880px] overflow-hidden mt-[-64px]
-">
+{/* CAMBIOS PRINCIPALES:
+  1. Volvemos a 'h-screen' para que ocupe toda la pantalla.
+  2. Ajustamos el margen superior negativo ('mt-[-80px]' y 'md:mt-[-128px]') para que coincida con la altura de tu nuevo header.
+*/}
+<section id="inicio" class="relative w-full h-screen overflow-hidden mt-[-80px] md:mt-[-128px]">
   <div class="overflow-hidden w-full h-full">
     <div
       id="carousel-track"
       class="flex w-full h-full transition-transform duration-700 ease-in-out"
     >
-      <img
-        src="/images/fibra1.jpg"
-        class="w-full h-full object-cover flex-shrink-0"
-        alt="Conexión de fibra óptica en zonas rurales"
-      />
-      <img
-        src="/images/fibra2.jpg"
-        class="w-full h-full object-cover flex-shrink-0"
-        alt="Conexión de fibra óptica en zonas rurales"
-      />
-      <img
-        src="/images/fibra3.jpg"
-        class="w-full h-full object-cover flex-shrink-0"
-        alt="Conexión de fibra óptica en zonas rurales"
-      />
+      {/* Slide 1: Imagen con Texto */}
+      <div class="w-full h-full flex-shrink-0 relative">
+        <img
+          src="/images/fibra1.jpg"
+          class="w-full h-full object-cover object-center"
+          alt="Familia conectada"
+        />
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="absolute inset-0 flex flex-col items-center justify-center text-center text-white p-8">
+          <h2 class="text-4xl md:text-6xl font-bold mb-4 animate-fade-in-down">Tu Conexión al Futuro</h2>
+          <p class="text-lg md:text-xl max-w-2xl mb-8 animate-fade-in-up">
+            Soluciones forestales innovadoras y sostenibles para un mundo más verde.
+          </p>
+          <a href="#contacto" class="bg-brand-accent text-white font-bold py-3 px-8 rounded-lg hover:bg-red-700 transition-colors animate-fade-in-up">
+            Contáctanos
+          </a>
+        </div>
+      </div>
+
+      {/* Slide 2: Solo Texto */}
+      <div class="w-full h-full flex-shrink-0 bg-brand-primary flex items-center justify-center p-8">
+        <div class="text-center text-brand-text max-w-3xl mx-auto">
+          <h2 class="text-3xl md:text-5xl font-bold mb-4">Maderas de Calidad y Conciencia Ecológica</h2>
+          <p class="text-lg md:text-xl mb-8">
+            Comprometidos con la gestión forestal sostenible para ofrecerte los mejores productos.
+          </p>
+          <a href="#servicios" class="bg-brand-accent text-white font-bold py-3 px-8 rounded-lg hover:bg-red-700 transition-colors">
+            Nuestros Servicios
+          </a>
+        </div>
+      </div>
+
+      {/* Slide 3: Imagen con Texto */}
+      <div class="w-full h-full flex-shrink-0 relative">
+        <img
+          src="/images/fibra3.jpg"
+          class="w-full h-full object-cover object-center"
+          alt="Innovación y tecnología"
+        />
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="absolute inset-0 flex flex-col items-center justify-center text-center text-white p-8">
+           <h2 class="text-4xl md:text-6xl font-bold mb-4 animate-fade-in-down">Innovación en Cada Proyecto</h2>
+          <p class="text-lg md:text-xl max-w-2xl mb-8 animate-fade-in-up">
+            Desde la siembra hasta el producto final, aplicamos tecnología de punta.
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- Flechas -->
-  <button
-    id="prevBtn"
-    class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/40 hover:bg-white text-linknet rounded-full p-2 z-10"
-  >
-    ‹
+  {/* Controles y Puntos (Sin cambios) */}
+  <button id="prevBtn" class="absolute left-4 top-1/2 -translate-y-1/2 text-white p-2 z-10">
+    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
   </button>
-  <button
-    id="nextBtn"
-    class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/40 hover:bg-white text-linknet rounded-full p-2 z-10"
-  >
-    ›
+  <button id="nextBtn" class="absolute right-4 top-1/2 -translate-y-1/2 text-white p-2 z-10">
+    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
   </button>
+  <div id="carousel-dots" class="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3 z-10">
+  </div>
 </section>
+
+<style>
+  @keyframes fade-in-down {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fade-in-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in-down {
+    animation: fade-in-down 0.8s ease-out both;
+  }
+  .animate-fade-in-up {
+    animation: fade-in-up 0.8s ease-out 0.3s both;
+  }
+</style>

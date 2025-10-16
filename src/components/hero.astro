@@ -1,15 +1,82 @@
-<section class="text-center py-16 px-4 bg-white dark:bg-gray-900 dark:text-white transition-colors duration-300">
-    <h2 class="text-4xl font-extrabold text-linknet mb-4">
-      Conexión rápida y estable
-    </h2>
-    <p class="text-lg text-gray-700 mb-6 dark:text-gray-700">
-      Internet de alta velocidad para Temuco y Rucahue.
-    </p>
-    <a
-      href="#planes"
-      class="bg-linknet text-white font-semibold px-6 py-3 rounded-xl hover:bg-linknet-accent transition"
-    >
-      Ver planes disponibles
-    </a>
-  </section>
-  
+<section id="empresa" class="bg-white py-16 md:py-24 overflow-x-hidden">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    
+    <div class="scroll-animate-item">
+      <h2 class="text-4xl font-bold font-sans text-brand-secondary">
+        CANAHUATEXPORT
+      </h2>
+      <p class="mt-2 text-lg text-gray-600 font-serif">
+        Calidad de Exportación con Conciencia Ecológica
+      </p>
+    </div>
+
+    <div class="mt-16 grid md:grid-cols-3 gap-12">
+
+      <div class="scroll-animate-item flex flex-col items-center">
+        <div class="bg-brand-accent rounded-full p-5 w-24 h-24 flex items-center justify-center text-white">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+        </div>
+        <h3 class="text-2xl font-bold font-sans mt-6 text-brand-secondary">Calidad</h3>
+        <p class="mt-2 text-[#868E96] leading-relaxed font-serif">
+          Elaboración y comercialización de productos certificados bajo los más altos estándares internacionales.
+        </p>
+      </div>
+
+      <div class="scroll-animate-item flex flex-col items-center">
+        <div class="bg-brand-accent rounded-full p-5 w-24 h-24 flex items-center justify-center text-white">
+           <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22v-8h0a4 4 0 0 0-4-4H4a4 4 0 0 0-4 4v8h12zM24 22v-8h0a4 4 0 0 0-4-4h-4a4 4 0 0 0-4 4v8h12zM16 4a4 4 0 0 0-4 4h8a4 4 0 0 0-4-4z"></path></svg>
+        </div>
+        <h3 class="text-2xl font-bold font-sans mt-6 text-brand-secondary">Responsabilidad</h3>
+        <p class="mt-2 text-[#868E96] leading-relaxed font-serif">
+          Sostenemos un alto compromiso con el medio ambiente y su entorno mediante nuestro proceso forestal y productivo.
+        </p>
+      </div>
+
+      <div class="scroll-animate-item flex flex-col items-center">
+        <div class="bg-brand-accent rounded-full p-5 w-24 h-24 flex items-center justify-center text-white">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+        </div>
+        <h3 class="text-2xl font-bold font-sans mt-6 text-brand-secondary">Globalización</h3>
+        <p class="mt-2 text-[#868E96] leading-relaxed font-serif">
+          Seguridad e innovación, otorgando productos de gran calidad que están destinados al mercado nacional e internacional.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .scroll-animate-item {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  .scroll-animate-item.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  /* Efecto escalonado para las columnas */
+  .grid .scroll-animate-item:nth-child(2) { transition-delay: 0.2s; }
+  .grid .scroll-animate-item:nth-child(3) { transition-delay: 0.4s; }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target); // Opcional: deja de observar el elemento una vez animado
+        }
+      });
+    }, {
+      threshold: 0.1 // El elemento se activa cuando es visible en un 10%
+    });
+
+    const itemsToAnimate = document.querySelectorAll('.scroll-animate-item');
+    itemsToAnimate.forEach(item => {
+      observer.observe(item);
+    });
+  });
+</script>

@@ -1,18 +1,21 @@
 module.exports = {
-  darkMode: 'class', // ⬅️ Agrega esto
+  darkMode: 'class',
   content: ["./src/**/*.{astro,html,js,jsx,ts,tsx}"],
   theme: {
     extend: {
       colors: {
-        linknet: {
-          DEFAULT: "#0d3b66",
-          light: "#fafafa",
-          accent: "#f4d35e",
-        }
+        // Nueva paleta de colores basada en la tarjeta
+        'brand': {
+          'primary': '#4a4a4a', // Gris oscuro de fondo
+          'secondary': '#333333', // Un gris un poco más claro
+          'accent': '#d93644',   // Rojo del logo
+          'text': '#ffffff',      // Color de texto principal
+        },
       },
       fontFamily: {
-        sans: ["Roboto", "sans-serif"]
-      }
+        sans: ["Montserrat", "sans-serif"],
+        serif: ["Roboto Slab", "serif"],
+      },
     },
   },
   plugins: [],
