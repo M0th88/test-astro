@@ -4,52 +4,52 @@ import ProductModal from './ProductModal.astro';
 const productos = [
   {
     id: 'astilla-industrial',
-    nombre: "Astilla Industrial",
-    descripcion: "Para celulosa y tableros",
-    img: "/images/astilla1.jpeg", // Corregido a .jpeg
-    detalles: "Astillas de alta calidad, procesadas para cumplir con los estándares de la industria de la celulosa y la fabricación de tableros."
+    nombreKey: "product_industrial_chip_name",
+    descripcionKey: "product_industrial_chip_desc",
+    img: "/images/astilla1.jpeg",
+    detallesKey: "product_industrial_chip_details"
   },
   {
     id: 'aserrin-seco',
-    nombre: "Aserrín Seco",
-    descripcion: "Ideal para camas de animales y biomasa",
-    img: "/images/aserrin.jpeg", // Corregido a .jpeg
-    detalles: "Aserrín de pino limpio y seco, excelente como material absorbente para camas de animales o como combustible de biomasa."
+    nombreKey: "product_dry_sawdust_name",
+    descripcionKey: "product_dry_sawdust_desc",
+    img: "/images/aserrin.jpeg",
+    detallesKey: "product_dry_sawdust_details"
   },
   {
     id: 'corteza-pino',
-    nombre: "Corteza de Pino",
-    descripcion: "Uso decorativo y energético",
-    img: "/images/corteza.jpeg", // Corregido a .jpeg
-    detalles: "Corteza de pino utilizada en jardinería para control de malezas y decoración, así como fuente de energía en calderas de biomasa."
+    nombreKey: "product_pine_bark_name",
+    descripcionKey: "product_pine_bark_desc",
+    img: "/images/corteza.jpeg",
+    detallesKey: "product_pine_bark_details"
   },
   {
     id: 'astilla-energia',
-    nombre: "Astilla para Energía",
-    descripcion: "Combustible de biomasa",
-    img: "/images/astilla.jpeg", // Corregido a .jpeg
-    detalles: "Astillas de madera seleccionadas para un alto poder calorífico, optimizadas como combustible renovable para la generación de energía."
+    nombreKey: "product_energy_chip_name",
+    descripcionKey: "product_energy_chip_desc",
+    img: "/images/astilla.jpeg",
+    detallesKey: "product_energy_chip_details"
   },
   {
     id: 'viruta-madera',
-    nombre: "Viruta de Madera",
-    descripcion: "Subproducto para diversos usos",
-    img: "/images/aserrin1.jpeg", // Corregido a .jpeg
-    detalles: "Viruta de madera limpia, ideal para embalaje, camas de animales o como material compostable."
+    nombreKey: "product_wood_shavings_name",
+    descripcionKey: "product_wood_shavings_desc",
+    img: "/images/aserrin1.jpeg",
+    detallesKey: "product_wood_shavings_details"
   },
   {
     id: 'chip-uniforme',
-    nombre: "Chip Uniforme",
-    descripcion: "Para procesos industriales específicos",
-    img: "/images/astilla3.jpeg", // Corregido a .jpeg
-    detalles: "Chips de madera de tamaño controlado, perfectos para procesos industriales que requieren una materia prima homogénea."
+    nombreKey: "product_uniform_chip_name",
+    descripcionKey: "product_uniform_chip_desc",
+    img: "/images/astilla3.jpeg",
+    detallesKey: "product_uniform_chip_details"
   },
   {
     id: 'astilla-mezclada',
-    nombre: "Astilla Mezclada",
-    descripcion: "Biomasa de alta densidad",
-    img: "/images/astilla2.jpeg", // Este ya era .jpeg
-    detalles: "Mezcla de astillas de diferentes granulometrías, ideal para calderas industriales que requieren un flujo de combustible constante y denso."
+    nombreKey: "product_mixed_chip_name",
+    descripcionKey: "product_mixed_chip_desc",
+    img: "/images/astilla2.jpeg",
+    detallesKey: "product_mixed_chip_details"
   }
 ];
 ---
@@ -57,10 +57,10 @@ const productos = [
 <section id="productos" class="bg-gray-100 py-16 md:py-24">
   <div class="max-w-7xl mx-auto px-6 text-center">
     <div class="scroll-animate-item">
-      <h2 class="text-3xl md:text-4xl font-bold font-sans text-brand-secondary uppercase">
+      <h2 class="text-3xl md:text-4xl font-bold font-sans text-brand-secondary uppercase" data-i18n="products_title">
         Productos
       </h2>
-      <p class="mt-4 text-lg text-gray-600 font-serif max-w-2xl mx-auto">
+      <p class="mt-4 text-lg text-gray-600 font-serif max-w-2xl mx-auto" data-i18n="products_subtitle">
         Principales productos forestales producidos y comercializados por Canahuatexport.
       </p>
     </div>
@@ -74,17 +74,17 @@ const productos = [
             data-modal-trigger-for={producto.id}
           >
             <div class="relative w-full h-56 flex-shrink-0">
-              <img src={producto.img} alt={producto.nombre} class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" />
+              <img src={producto.img} alt={producto.nombreKey} class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" />
             </div>
             <div class="absolute inset-0 bg-brand-accent bg-opacity-80 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
             </div>
             <div class="p-6 text-left relative z-10 bg-white transition-colors duration-300 group-hover:bg-transparent">
-              <h3 class="text-xl font-bold font-sans text-brand-secondary transition-colors duration-300 group-hover:text-white">
-                {producto.nombre}
+              <h3 class="text-xl font-bold font-sans text-brand-secondary transition-colors duration-300 group-hover:text-white" data-i18n={producto.nombreKey}>
+                {/* El texto será llenado por el script */}
               </h3>
-              <p class="mt-1 text-gray-500 font-serif transition-colors duration-300 group-hover:text-white">
-                {producto.descripcion}
+              <p class="mt-1 text-gray-500 font-serif transition-colors duration-300 group-hover:text-white" data-i18n={producto.descripcionKey}>
+                {/* El texto será llenado por el script */}
               </p>
             </div>
           </div>
@@ -94,6 +94,7 @@ const productos = [
   </div>
 </section>
 
+{/* CORRECCIÓN AQUÍ: Pasamos el objeto 'producto' directamente sin intentar traducirlo */}
 {
   productos.map((producto) => (
     <ProductModal product={producto} />

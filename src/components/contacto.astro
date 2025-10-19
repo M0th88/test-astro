@@ -1,26 +1,24 @@
 ---
-// Información de contacto para que sea fácil de editar
+// La información que no cambia con el idioma se mantiene aquí.
 const info = {
   telefonos: ["+56 9 9991 3752"],
   direccion: "Los Diaguitas 770 - Freire - Araucanía, Chile",
   emailGeneral: "mauricio@empresasmc.cl",
-  emailCadena: "cadena@canahuatexport.cl" // Email de ejemplo
+  emailCadena: "cadena@canahuatexport.cl"
 }
 ---
 
 <section
   id="contacto"
   class="relative py-20 md:py-32 bg-cover bg-center"
-  style="background-image: url('/images/fibra1.jpg');"
+  style="background-image: url('/images/corteza.jpeg');"
 >
-  {/* Capa oscura sobre el fondo para mejorar la legibilidad del texto */}
   <div class="absolute inset-0 bg-black/60"></div>
 
   <div class="relative max-w-6xl mx-auto px-6 text-white scroll-animate-item">
-    {/* Título de la sección */}
     <div class="text-center mb-12">
-      <h2 class="text-3xl md:text-4xl font-bold font-sans uppercase">Contacto</h2>
-      <p class="mt-4 text-lg text-gray-300 font-serif max-w-2xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold font-sans uppercase" data-i18n="contact_title">Contacto</h2>
+      <p class="mt-4 text-lg text-gray-300 font-serif max-w-2xl mx-auto" data-i18n="contact_subtitle">
         Ante cualquier consulta, escríbenos. Estaremos encantados en responder.
       </p>
     </div>
@@ -30,30 +28,30 @@ const info = {
       <form action="#" method="POST" class="space-y-6">
         <div>
           <label for="name" class="sr-only">Su nombre</label>
-          <input type="text" id="name" name="name" placeholder="Su nombre *" required class="w-full bg-white/90 text-gray-800 p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-accent font-serif" />
+          <input type="text" id="name" name="name" placeholder="Su nombre *" required class="w-full bg-white/90 text-gray-800 p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-accent font-serif" data-i18n="contact_form_name" />
         </div>
         <div>
           <label for="email" class="sr-only">Correo electrónico</label>
-          <input type="email" id="email" name="email" placeholder="Correo electrónico *" required class="w-full bg-white/90 text-gray-800 p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-accent font-serif" />
+          <input type="email" id="email" name="email" placeholder="Correo electrónico *" required class="w-full bg-white/90 text-gray-800 p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-accent font-serif" data-i18n="contact_form_email" />
         </div>
         <div>
           <label for="message" class="sr-only">Mensaje</label>
-          <textarea id="message" name="message" rows="5" placeholder="Mensaje *" required class="w-full bg-white/90 text-gray-800 p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-accent font-serif"></textarea>
+          <textarea id="message" name="message" rows="5" placeholder="Mensaje *" required class="w-full bg-white/90 text-gray-800 p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-accent font-serif" data-i18n="contact_form_message"></textarea>
         </div>
         <div>
-          <button type="submit" class="w-full bg-brand-accent text-white font-bold py-3 px-6 rounded-md hover:bg-red-700 transition-colors font-sans text-lg">
+          <button type="submit" class="w-full bg-brand-accent text-white font-bold py-3 px-6 rounded-md hover:bg-red-700 transition-colors font-sans text-lg" data-i18n="contact_form_button">
             Enviar Mensaje
           </button>
         </div>
       </form>
 
       <div class="bg-black/50 p-8 rounded-lg backdrop-blur-sm">
-        <h3 class="text-2xl font-bold font-sans mb-8">Información de contacto</h3>
+        <h3 class="text-2xl font-bold font-sans mb-8" data-i18n="contact_info_title">Información de contacto</h3>
         <div class="space-y-6">
           
           <div>
             <h4 class="text-md font-sans inline-block mb-2">
-              <span class="bg-brand-accent px-2 py-1">Teléfonos</span>
+              <span class="bg-brand-accent px-2 py-1" data-i18n="contact_info_phones">Teléfonos</span>
             </h4>
             {info.telefonos.map(tel => (
               <p class="font-serif text-gray-200">{tel}</p>
@@ -62,21 +60,21 @@ const info = {
 
           <div>
             <h4 class="text-md font-sans inline-block mb-2">
-              <span class="bg-brand-accent px-2 py-1">Dirección</span>
+              <span class="bg-brand-accent px-2 py-1" data-i18n="contact_info_address">Dirección</span>
             </h4>
             <p class="font-serif text-gray-200">{info.direccion}</p>
           </div>
           
           <div>
             <h4 class="text-md font-sans inline-block mb-2">
-              <span class="bg-brand-accent px-2 py-1">Contacto general</span>
+              <span class="bg-brand-accent px-2 py-1" data-i18n="contact_info_general">Contacto general</span>
             </h4>
             <a href={`mailto:${info.emailGeneral}`} class="font-serif text-gray-200 hover:text-brand-accent transition-colors block">{info.emailGeneral}</a>
           </div>
 
           <div>
             <h4 class="text-md font-sans inline-block mb-2">
-              <span class="bg-brand-accent px-2 py-1">Cadena de custodia</span>
+              <span class="bg-brand-accent px-2 py-1" data-i18n="contact_info_chain">Cadena de custodia</span>
             </h4>
             <a href={`mailto:${info.emailCadena}`} class="font-serif text-gray-200 hover:text-brand-accent transition-colors block">{info.emailCadena}</a>
           </div>

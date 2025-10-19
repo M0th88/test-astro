@@ -1,12 +1,11 @@
-<section id="empresa1" class="bg-white py-16 md:py-24 overflow-x-hidden">
+<section id="features" class="bg-white py-16 md:py-24 overflow-x-hidden">
   <div class="max-w-6xl mx-auto px-6 text-center">
     
     <div class="scroll-animate-item">
-      {/* Usamos font-sans para el título Montserrat */}
-      <h2 class="text-4xl font-bold font-sans text-brand-secondary">
+      <h2 class="text-4xl font-bold font-sans text-brand-secondary" data-i18n="features_main_title">
         CANAHUATEXPORT
       </h2>
-      <p class="mt-2 text-lg text-gray-600 font-serif">
+      <p class="mt-2 text-lg text-gray-600 font-serif" data-i18n="features_main_subtitle">
         Calidad de Exportación con Conciencia Ecológica
       </p>
     </div>
@@ -17,20 +16,18 @@
         <div class="bg-brand-accent rounded-full p-5 w-24 h-24 flex items-center justify-center text-white">
           <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
         </div>
-        {/* Usamos font-sans para el título Montserrat */}
-        <h3 class="text-2xl font-bold font-sans mt-6 text-brand-secondary">Calidad</h3>
-        <p class="mt-2 text-[#868E96] leading-relaxed font-serif">
+        <h3 class="text-2xl font-bold font-sans mt-6 text-brand-secondary" data-i18n="features_quality_title">Calidad</h3>
+        <p class="mt-2 text-[#868E96] leading-relaxed font-serif" data-i18n="features_quality_text">
           Elaboración y comercialización de productos certificados bajo los más altos estándares internacionales.
         </p>
       </div>
 
-      {/* Las otras dos columnas (con la misma lógica de fuentes) */}
       <div class="scroll-animate-item flex flex-col items-center">
         <div class="bg-brand-accent rounded-full p-5 w-24 h-24 flex items-center justify-center text-white">
            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22v-8h0a4 4 0 0 0-4-4H4a4 4 0 0 0-4 4v8h12zM24 22v-8h0a4 4 0 0 0-4-4h-4a4 4 0 0 0-4 4v8h12zM16 4a4 4 0 0 0-4 4h8a4 4 0 0 0-4-4z"></path></svg>
         </div>
-        <h3 class="text-2xl font-bold font-sans mt-6 text-brand-secondary">Responsabilidad</h3>
-        <p class="mt-2 text-[#868E96] leading-relaxed font-serif">
+        <h3 class="text-2xl font-bold font-sans mt-6 text-brand-secondary" data-i18n="features_responsibility_title">Responsabilidad</h3>
+        <p class="mt-2 text-[#868E96] leading-relaxed font-serif" data-i18n="features_responsibility_text">
           Sostenemos un alto compromiso con el medio ambiente y su entorno mediante nuestro proceso forestal y productivo.
         </p>
       </div>
@@ -39,8 +36,8 @@
         <div class="bg-brand-accent rounded-full p-5 w-24 h-24 flex items-center justify-center text-white">
           <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
         </div>
-        <h3 class="text-2xl font-bold font-sans mt-6 text-brand-secondary">Globalización</h3>
-        <p class="mt-2 text-[#868E96] leading-relaxed font-serif">
+        <h3 class="text-2xl font-bold font-sans mt-6 text-brand-secondary" data-i18n="features_globalization_title">Globalización</h3>
+        <p class="mt-2 text-[#868E96] leading-relaxed font-serif" data-i18n="features_globalization_text">
           Seguridad e innovación, otorgando productos de gran calidad que están destinados al mercado nacional e internacional.
         </p>
       </div>
@@ -58,17 +55,15 @@
   document.addEventListener("DOMContentLoaded", () => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        // Si el elemento está entrando en la pantalla, añade la clase para animarlo
         if (entry.isIntersecting) {
           entry.target.classList.add('is-visible');
         } 
-        // Si el elemento está saliendo de la pantalla, quita la clase para reiniciarlo
         else {
           entry.target.classList.remove('is-visible');
         }
       });
     }, {
-      threshold: 0.6 // La animación se activa cuando al menos el 10% del elemento es visible
+      threshold: 0.1 
     });
 
     const itemsToAnimate = document.querySelectorAll('.scroll-animate-item');

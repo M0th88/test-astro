@@ -3,7 +3,7 @@ const { product } = Astro.props;
 const modalId = `modal-${product.id}`;
 ---
 <div 
-  id={modalId}
+  id={`modal-${product.id}`} 
   class="modal-overlay fixed inset-0 z-50 bg-black/70 flex items-center justify-center p-4 transition-opacity duration-300 opacity-0 invisible"
 >
   <div 
@@ -17,16 +17,19 @@ const modalId = `modal-${product.id}`;
     
     <div class="grid md:grid-cols-2 gap-6 p-6">
       <div class="flex items-center justify-center">
-        <img src={product.img} alt={product.nombre} class="w-full h-auto max-h-[400px] object-contain rounded-md" />
+        <img
+          src={product.img}
+          alt={product.nombreKey}
+          class="w-full h-auto max-h-[400px] object-contain rounded-md"
+        />
       </div>
       <div class="flex flex-col justify-center text-left">
-        <h3 class="text-2xl font-bold font-sans text-brand-secondary mb-2">{product.nombre}</h3>
-        <p class="text-gray-500 font-serif italic mb-4">{product.descripcion}</p>
-        {product.detalles && (
-          <div class="text-gray-700 font-serif space-y-2">
-            <p>{product.detalles}</p>
-          </div>
-        )}
+        {/* CORRECCIÓN AQUÍ: Usamos data-i18n con las claves */}
+        <h3 class="text-2xl font-bold font-sans text-brand-secondary mb-2" data-i18n={product.nombreKey}></h3>
+        <p class="text-gray-500 font-serif italic mb-4" data-i18n={product.descripcionKey}></p>
+        <div class="text-gray-700 font-serif space-y-2">
+            <p data-i18n={product.detallesKey}></p>
+        </div>
         <button
           class="modal-close-btn bg-brand-accent text-white font-bold py-2 px-6 rounded-lg hover:bg-red-700 transition-colors font-sans mt-6 self-start"
         >
