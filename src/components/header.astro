@@ -7,88 +7,43 @@
     --color-accent: #d93644;
     --color-text: #ffffff;
   }
-
-  #main-header {
-    background-color: var(--color-primary);
-    transition: background-color 0.3s;
-  }
-  #header-inner {
-    height: var(--header-height-initial);
-    transition: height 0.3s;
-  }
-  #header-logo {
-    height: 80px; /* Logo más grande (equivalente a h-20) */
-    transition: height 0.3s;
-  }
-
-  .header-link {
-    color: var(--color-text);
-    transition: color 0.2s;
-  }
-  .header-link:hover {
-    color: var(--color-accent);
-  }
-
-  /* Efecto al hacer scroll */
-  .header-shrink #header-inner {
-    height: var(--header-height-shrink);
-  }
-  .header-shrink #header-logo {
-    height: 56px; /* Equivalente a h-14 */
-  }
-  .header-shrink {
-    background-color: var(--color-secondary);
-  }
-  
-  /* --- ESTILOS RESPONSIVE (SIN CAMBIOS) --- */
-  #mobile-nav {
-    display: none; position: fixed; top: 0; right: 0;
-    width: 80%; max-width: 320px; height: 100vh;
-    background-color: #fff; z-index: 100; flex-direction: column;
-    padding: 6rem 2rem 2rem; box-shadow: -4px 0 15px rgba(0,0,0,0.2);
-    animation: slide-in-right 0.3s ease-out;
-  }
+  #main-header { background-color: var(--color-primary); transition: background-color 0.3s; }
+  #header-inner { height: var(--header-height-initial); transition: height 0.3s; }
+  #header-logo { height: 80px; transition: height 0.3s; }
+  .header-link { color: var(--color-text); transition: color 0.2s; }
+  .header-link:hover { color: var(--color-accent); }
+  .header-shrink #header-inner { height: var(--header-height-shrink); }
+  .header-shrink #header-logo { height: 56px; }
+  .header-shrink { background-color: var(--color-secondary); }
+  #mobile-nav { display: none; position: fixed; top: 0; right: 0; width: 80%; max-width: 320px; height: 100vh; background-color: #fff; z-index: 100; flex-direction: column; padding: 6rem 2rem 2rem; box-shadow: -4px 0 15px rgba(0,0,0,0.2); animation: slide-in-right 0.3s ease-out; }
   #mobile-nav.open { display: flex; }
-  #mobile-nav .header-link {
-    color: #2c2c2c !important; font-weight: 700;
-    font-size: 1.125rem; padding: 1rem 0; width: 100%;
-  }
-  .mobile-menu-btn {
-    z-index: 110; border: 2px solid var(--color-accent);
-    border-radius: 8px; padding: 0.5rem; color: var(--color-accent);
-  }
-  @keyframes slide-in-right {
-    from { transform: translateX(100%); }
-    to { transform: translateX(0); }
-  }
+  #mobile-nav .header-link { color: #2c2c2c !important; font-weight: 700; font-size: 1.125rem; padding: 1rem 0; width: 100%; }
+  .mobile-menu-btn { z-index: 110; border: 2px solid var(--color-accent); border-radius: 8px; padding: 0.5rem; color: var(--color-accent); }
+  @keyframes slide-in-right { from { transform: translateX(100%); } to { transform: translateX(0); } }
 </style>
 
 <header id="main-header" class="fixed top-0 left-0 w-full z-50">
   <div id="header-inner" class="max-w-7xl mx-auto px-6 flex items-center justify-between">
-    
     <div class="flex-1 flex justify-start">
-      <a href="#inicio">
+      <a href="#inicio" class="bg-white rounded-md p-1 shadow-md">
         <img id="header-logo" src="/images/iconof.jpg" alt="Logo Canahuatexport" class="w-auto" />
       </a>
     </div>
-
     <nav class="hidden md:flex justify-center">
-      <ul class="flex space-x-8 font-semibold">
-        <li><a href="#servicios" class="header-link">Servicios</a></li>
-        <li><a href="#productos" class="header-link">Productos</a></li>
-        <li><a href="#empresa" class="header-link">Empresa</a></li>
-        <li><a href="#procesos" class="header-link">Procesos</a></li>
-        <li><a href="#contacto" class="header-link">Contacto</a></li>
+      <ul class="flex space-x-8 font-sans font-bold">
+        <li><a href="#servicios" class="header-link" data-i18n="nav_servicios">Servicios</a></li>
+        <li><a href="#productos" class="header-link" data-i18n="nav_productos">Productos</a></li>
+        <li><a href="#empresa" class="header-link" data-i18n="nav_empresa">Empresa</a></li>
+        <li><a href="#procesos" class="header-link" data-i18n="nav_procesos">Procesos</a></li>
+        <li><a href="#contacto" class="header-link" data-i18n="nav_contacto">Contacto</a></li>
       </ul>
     </nav>
-
     <div class="hidden md:flex flex-1 justify-end">
        <button id="lang-toggle" class="flex items-center gap-2 text-white">
-        <img id="lang-flag" src="/images/gb.png" alt="UK Flag" class="w-6 h-6" />
-        <span>En</span>
+        <img id="lang-flag" src="/images/es.png" alt="Bandera de idioma" class="w-6 h-6" />
+        <span id="lang-text">ES</span>
       </button>
     </div>
-
     <div class="md:hidden flex-1 flex justify-end">
         <button id="mobile-menu-btn" class="mobile-menu-btn">
           <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
@@ -96,31 +51,29 @@
         </button>
     </div>
   </div>
-
   <nav id="mobile-nav" class="md:hidden">
     <ul class="flex flex-col space-y-4">
-        <li><a href="#servicios" class="header-link">Servicios</a></li>
-        <li><a href="#productos" class="header-link">Productos</a></li>
-        <li><a href="#empresa" class="header-link">Empresa</a></li>
-        <li><a href="#procesos" class="header-link">Procesos</a></li>
-        <li><a href="#contacto" class="header-link">Contacto</a></li>
+        <li><a href="#servicios" class="header-link" data-i18n="nav_servicios">Servicios</a></li>
+        <li><a href="#productos" class="header-link" data-i18n="nav_productos">Productos</a></li>
+        <li><a href="#empresa" class="header-link" data-i18n="nav_empresa">Empresa</a></li>
+        <li><a href="#procesos" class="header-link" data-i18n="nav_procesos">Procesos</a></li>
+        <li><a href="#contacto" class="header-link" data-i18n="nav_contacto">Contacto</a></li>
     </ul>
      <button id="lang-toggle-mobile" class="flex items-center gap-2 mt-8">
-        <img id="lang-flag-mobile" src="/images/gb.png" alt="UK Flag" class="w-6 h-6" />
-        <span class="text-gray-800 font-bold">En</span>
+        <img id="lang-flag-mobile" src="/images/es.png" alt="Bandera de idioma" class="w-6 h-6" />
+        <span id="lang-text-mobile" class="text-gray-800 font-bold">ES</span>
       </button>
   </nav>
 </header>
 
 <script is:inline>
+  // Script ÚNICAMENTE para el funcionamiento del Header (scroll y menú móvil)
   document.addEventListener('DOMContentLoaded', () => {
     const header = document.getElementById('main-header');
     const menuBtn = document.getElementById('mobile-menu-btn');
     const mobileNav = document.getElementById('mobile-nav');
     const iconOpen = document.getElementById('menu-icon-open');
     const iconClose = document.getElementById('menu-icon-close');
-
-    // Efecto de encogimiento al hacer scroll
     window.addEventListener('scroll', () => {
       if (window.scrollY > 50) {
         header.classList.add('header-shrink');
@@ -128,15 +81,11 @@
         header.classList.remove('header-shrink');
       }
     });
-
-    // Abrir y cerrar menú móvil
     menuBtn.addEventListener('click', () => {
       mobileNav.classList.toggle('open');
       iconOpen.classList.toggle('hidden');
       iconClose.classList.toggle('hidden');
     });
-
-    // Cerrar menú al hacer click en un enlace
     mobileNav.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
         mobileNav.classList.remove('open');

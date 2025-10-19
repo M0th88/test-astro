@@ -19,38 +19,76 @@ const info = {
 
 <section
   id="empresa"
-  class="relative py-20 md:py-32 bg-cover bg-center bg-fixed"
+  class="relative py-20 md:py-24 bg-cover bg-center bg-fixed"
   style="background-image: url('/images/fibra3.jpg');"
 >
   {/* Capa oscura sobre el fondo para mejorar la legibilidad del texto */}
-  <div class="absolute inset-0 bg-brand-secondary opacity-50"></div>
+  <div class="absolute inset-0 bg-brand-secondary opacity-60"></div>
 
   <div class="relative max-w-4xl mx-auto px-6 scroll-animate-item">
     {/* Contenedor semitransparente para el texto */}
-    <div class="bg-black/70 p-8 md:p-12 rounded-lg text-white backdrop-blur-sm">
-      <h2 class="text-3xl md:text-4xl font-bold font-sans text-center mb-10">{info.tituloPrincipal}</h2>
+    <div class="bg-black/75 p-8 md:p-12 rounded-lg text-white backdrop-blur-sm">
+      <h2 class="text-3xl md:text-4xl font-bold font-sans text-center mb-10" data-i18n="company_info_title">
+        Presentación de Canahuatexport
+      </h2>
 
       <div class="space-y-8">
+        
         <div>
           <h3 class="text-xl font-bold font-sans inline-block">
-            <span class="bg-brand-accent px-2 py-1">{info.quienesSomos.titulo}</span>
+            <span class="bg-brand-accent px-2 py-1" data-i18n="company_info_whoweare_title">Canahuatexport</span>
           </h3>
-          <p class="mt-3 font-serif text-gray-200 leading-relaxed">{info.quienesSomos.texto}</p>
+          <p class="mt-3 font-serif text-gray-200 leading-relaxed" data-i18n="company_info_whoweare_text">
+            Canahuatexport es una empresa ubicada en la región de la Araucanía, dedicada a la compra y venta de biomasa de productos forestales. Además, la compañía diversifica sus actividades mediante el arriendo de inmuebles, ofreciendo soluciones integrales y confiables a sus clientes.
+          </p>
         </div>
 
         <div>
           <h3 class="text-xl font-bold font-sans inline-block">
-            <span class="bg-brand-accent px-2 py-1">{info.mision.titulo}</span>
+            <span class="bg-brand-accent px-2 py-1" data-i18n="company_info_mission_title">Misión</span>
           </h3>
-          <p class="mt-3 font-serif text-gray-200 leading-relaxed">{info.mision.texto}</p>
+          <p class="mt-3 font-serif text-gray-200 leading-relaxed" data-i18n="company_info_mission_text">
+            Proveer productos forestales y servicios inmobiliarios de alta calidad, satisfaciendo las necesidades de nuestros clientes, mediante procesos responsables, eficientes y sostenibles que fomenten el desarrollo económico y ambiental.
+          </p>
         </div>
         
         <div>
           <h3 class="text-xl font-bold font-sans inline-block">
-            <span class="bg-brand-accent px-2 py-1">{info.vision.titulo}</span>
+            <span class="bg-brand-accent px-2 py-1" data-i18n="company_info_vision_title">Visión</span>
           </h3>
-          <p class="mt-3 font-serif text-gray-200 leading-relaxed">{info.vision.texto}</p>
+          <p class="mt-3 font-serif text-gray-200 leading-relaxed" data-i18n="company_info_vision_text">
+            Ser una empresa referente en el mercado forestal y de arriendo de inmuebles, reconocida por su compromiso con la calidad, la innovación y la sostenibilidad, contribuyendo al crecimiento del sector.
+          </p>
         </div>
+
+        <div>
+          <h3 class="text-xl font-bold font-sans inline-block">
+            <span class="bg-brand-accent px-2 py-1" data-i18n="company_info_values_title">Valores</span>
+          </h3>
+          <ul class="mt-3 font-serif text-gray-200 leading-relaxed list-disc list-inside space-y-2">
+            <li data-i18n="company_info_values_responsibility"><b>Responsabilidad:</b> Gestionamos nuestros recursos con respeto y conciencia ambiental.</li>
+            <li data-i18n="company_info_values_quality"><b>Calidad:</b> Garantizamos productos y servicios que cumplen con los más altos estándares.</li>
+            <li data-i18n="company_info_values_commitment"><b>Compromiso:</b> Cumplimos con nuestros clientes y aliados estratégicos con seriedad y transparencia.</li>
+            <li data-i18n="company_info_values_innovation"><b>Innovación:</b> Buscamos mejorar continuamente nuestros procesos para generar valor.</li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-xl font-bold font-sans inline-block">
+            <span class="bg-brand-accent px-2 py-1" data-i18n="company_info_services_title">Nuestros Servicios</span>
+          </h3>
+          <div class="mt-3 font-serif text-gray-200 leading-relaxed space-y-4">
+            <div>
+              <h4 class="font-bold" data-i18n="company_info_services_purchase_title">Compra y venta</h4>
+              <p data-i18n="company_info_services_purchase_text">Adquisición y comercialización de productos forestales con control de calidad.</p>
+            </div>
+            <div>
+              <h4 class="font-bold" data-i18n="company_info_services_leasing_title">Arriendo de Inmuebles</h4>
+              <p data-i18n="company_info_services_leasing_text">Arriendo de bodegas, galpones y espacios comerciales para operaciones logísticas y de almacenamiento.</p>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>

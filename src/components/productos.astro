@@ -3,46 +3,54 @@ import ProductModal from './ProductModal.astro';
 
 const productos = [
   {
-    id: 'madera-lateral-seca',
-    nombre: "Madera Lateral Seca",
-    descripcion: "Madera de exportación",
-    img: "/images/fibra1.jpg", 
-    detalles: "Madera de pino Radiata secada artificialmente, ideal para construcción y mobiliario. Certificada bajo estándares internacionales."
+    id: 'astilla-industrial',
+    nombre: "Astilla Industrial",
+    descripcion: "Para celulosa y tableros",
+    img: "/images/astilla1.jpeg", // Corregido a .jpeg
+    detalles: "Astillas de alta calidad, procesadas para cumplir con los estándares de la industria de la celulosa y la fabricación de tableros."
   },
   {
-    id: 'pallet-verde',
-    nombre: "Pallet Verde",
-    descripcion: "Madera de exportación",
-    img: "/images/fibra2.jpg",
-    detalles: "Pallets ecológicos de madera verde, perfectos para la industria logística. Dimensiones personalizables y alta resistencia."
+    id: 'aserrin-seco',
+    nombre: "Aserrín Seco",
+    descripcion: "Ideal para camas de animales y biomasa",
+    img: "/images/aserrin.jpeg", // Corregido a .jpeg
+    detalles: "Aserrín de pino limpio y seco, excelente como material absorbente para camas de animales o como combustible de biomasa."
   },
   {
-    id: 'madera-lateral-verde',
-    descripcion: "Madera de exportación",
-    img: "/images/fibra3.jpg",
-    detalles: "Madera sin proceso de secado, robusta y económica para usos industriales y embalajes. Calidad garantizada para exportación."
+    id: 'corteza-pino',
+    nombre: "Corteza de Pino",
+    descripcion: "Uso decorativo y energético",
+    img: "/images/corteza.jpeg", // Corregido a .jpeg
+    detalles: "Corteza de pino utilizada en jardinería para control de malezas y decoración, así como fuente de energía en calderas de biomasa."
   },
   {
-    id: 'madera-central-verde',
-    nombre: "Madera Central Verde",
-    descripcion: "Mercado nacional",
-    img: "/images/fibra1.jpg", 
-    detalles: "Piezas de madera central, ideales para el mercado local en construcción ligera y estructuras no expuestas. Producto versátil y accesible."
+    id: 'astilla-energia',
+    nombre: "Astilla para Energía",
+    descripcion: "Combustible de biomasa",
+    img: "/images/astilla.jpeg", // Corregido a .jpeg
+    detalles: "Astillas de madera seleccionadas para un alto poder calorífico, optimizadas como combustible renovable para la generación de energía."
   },
   {
-    id: 'madera-lateral-seca-s4s',
-    nombre: "Madera Lateral Seca S4S",
-    descripcion: "Mercado nacional y de exportación",
-    img: "/images/fibra2.jpg",
-    detalles: "Madera secada y cepillada por sus cuatro caras (S4S), brindando un acabado liso y uniforme. Perfecta para muebles y acabados de alta calidad."
+    id: 'viruta-madera',
+    nombre: "Viruta de Madera",
+    descripcion: "Subproducto para diversos usos",
+    img: "/images/aserrin1.jpeg", // Corregido a .jpeg
+    detalles: "Viruta de madera limpia, ideal para embalaje, camas de animales o como material compostable."
   },
   {
-    id: 'astilla-pulpable',
-    nombre: "Astilla Pulpable",
-    descripcion: "Mercado nacional y de exportación",
-    img: "/images/fibra3.jpg",
-    detalles: "Astillas de madera de pino Radiata de alta calidad, utilizadas en la fabricación de celulosa y como biomasa energética. Producida de forma sostenible."
+    id: 'chip-uniforme',
+    nombre: "Chip Uniforme",
+    descripcion: "Para procesos industriales específicos",
+    img: "/images/astilla3.jpeg", // Corregido a .jpeg
+    detalles: "Chips de madera de tamaño controlado, perfectos para procesos industriales que requieren una materia prima homogénea."
   },
+  {
+    id: 'astilla-mezclada',
+    nombre: "Astilla Mezclada",
+    descripcion: "Biomasa de alta densidad",
+    img: "/images/astilla2.jpeg", // Este ya era .jpeg
+    detalles: "Mezcla de astillas de diferentes granulometrías, ideal para calderas industriales que requieren un flujo de combustible constante y denso."
+  }
 ];
 ---
 
@@ -61,21 +69,16 @@ const productos = [
       {
         productos.map((producto, index) => (
           <div
-            class="product-card bg-white rounded-lg shadow-md overflow-hidden relative cursor-pointer group flex flex-col"
+            class="product-card bg-white rounded-lg shadow-md overflow-hidden relative cursor-pointer group flex flex-col scroll-animate-item"
             style={`--animation-delay: ${index * 0.1}s;`}
             data-modal-trigger-for={producto.id}
           >
-            {/* Contenedor de la imagen */}
             <div class="relative w-full h-56 flex-shrink-0">
               <img src={producto.img} alt={producto.nombre} class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" />
             </div>
-
-            {/* Este es el nuevo overlay que cubre todo el contenido al hacer hover */}
             <div class="absolute inset-0 bg-brand-accent bg-opacity-80 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
             </div>
-
-            {/* Contenido de texto, ahora con z-index para que esté sobre la imagen pero debajo del overlay */}
             <div class="p-6 text-left relative z-10 bg-white transition-colors duration-300 group-hover:bg-transparent">
               <h3 class="text-xl font-bold font-sans text-brand-secondary transition-colors duration-300 group-hover:text-white">
                 {producto.nombre}

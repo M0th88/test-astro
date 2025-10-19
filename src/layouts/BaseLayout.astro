@@ -1,6 +1,6 @@
 ---
 import Botonwsp from "../components/botonwsp.astro";
-const { title = "Forestal Fátima" } = Astro.props;
+const { title = "Canahuatexport" } = Astro.props;
 ---
 
 <html lang="es">
@@ -12,6 +12,12 @@ const { title = "Forestal Fátima" } = Astro.props;
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto+Slab:wght@400&display=swap" rel="stylesheet">
     <slot name="head" />
+    
+    {/* 1. Scripts de la librería (esto está bien) */}
+    <script src="https://unpkg.com/i18next/dist/umd/i18next.min.js"></script>
+    <script src="https://unpkg.com/i18next-http-backend/dist/umd/i18nextHttpBackend.min.js"></script>
+    <script src="https://unpkg.com/i18next-browser-languagedetector/dist/umd/i18nextBrowserLanguageDetector.min.js"></script>
+    
     <style>
       html { scroll-behavior: smooth; }
     </style>
@@ -22,26 +28,70 @@ const { title = "Forestal Fátima" } = Astro.props;
       <Botonwsp />
     </div>
 
-    {/* SCRIPT GLOBAL PARA LA ANIMACIÓN DE SCROLL */}
+    {/* 2. SCRIPT CORREGIDO CON ESPERA ACTIVA */}
     <script is:inline>
-      document.addEventListener("DOMContentLoaded", () => {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-visible');
-            } else {
-              entry.target.classList.remove('is-visible');
-            }
-          });
-        }, {
-          threshold: 0.10
-        });
+      function startTranslationEngine() {
+        // Primero, verifica si la librería i18next ya está cargada en la ventana.
+        if (!window.i18next) {
+          // Si no está, espera 50ms y vuelve a intentarlo.
+          console.log("Esperando a i18next...");
+          setTimeout(startTranslationEngine, 50);
+          return;
+        }
 
-        const itemsToAnimate = document.querySelectorAll('.scroll-animate-item');
-        itemsToAnimate.forEach(item => {
-          observer.observe(item);
-        });
-      });
+        console.log("i18next encontrado. Inicializando...");
+
+        i18next
+          .use(i18nextHttpBackend)
+          .use(i18nextBrowserLanguageDetector)
+          .init({
+            backend: { loadPath: '/locales/{{lng}}.json' },
+            fallbackLng: 'es',
+            detection: {
+              order: ['localStorage', 'navigator'],
+              caches: ['localStorage']
+            }
+          }, (err, t) => {
+            if (err) return console.error("ERROR al inicializar i18next:", err);
+
+            console.log("i18next inicializado. Idioma:", i18next.language);
+
+            const updateContent = () => {
+              document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                const translation = i18next.t(key);
+                if (['INPUT', 'TEXTAREA'].includes(element.tagName)) {
+                  element.placeholder = translation;
+                } else {
+                  element.textContent = translation;
+                }
+              });
+              document.documentElement.lang = i18next.language;
+              updateLangUI(i18next.language);
+            };
+
+            const updateLangUI = (lang) => {
+              const isEs = lang.startsWith('es');
+              const flagSrc = isEs ? '/images/es.png' : '/images/gb.png';
+              const text = isEs ? 'ES' : 'EN';
+              document.querySelectorAll('#lang-flag, #lang-flag-mobile').forEach(el => el.src = flagSrc);
+              document.querySelectorAll('#lang-text, #lang-text-mobile').forEach(el => el.textContent = text);
+            };
+
+            const langToggles = document.querySelectorAll('#lang-toggle, #lang-toggle-mobile');
+            langToggles.forEach(button => {
+              button.addEventListener('click', () => {
+                const newLang = i18next.language.startsWith('es') ? 'en' : 'es';
+                i18next.changeLanguage(newLang);
+              });
+            });
+
+            updateContent();
+            i18next.on('languageChanged', updateContent);
+          });
+      }
+
+      document.addEventListener('DOMContentLoaded', startTranslationEngine);
     </script>
   </body>
 </html>
