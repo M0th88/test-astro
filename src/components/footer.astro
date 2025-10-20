@@ -33,20 +33,6 @@ const anioActual = new Date().getFullYear();
       &copy; {anioActual} Canahuatexport. Todos los derechos reservados.
     </p>
 
-    <div class="flex items-center gap-4">
-      {
-        redesSociales.map(red => (
-          <a 
-            href={red.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`Visita nuestro perfil de ${red.nombre}`}
-            class="w-9 h-9 flex items-center justify-center bg-brand-secondary text-white rounded-full hover:bg-brand-accent transition-colors"
-          >
-            <Fragment set:html={red.icono} />
-          </a>
-        ))
-      }
-    </div>
+
   </div>
 </footer>
