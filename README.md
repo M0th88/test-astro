@@ -1,6 +1,6 @@
-# Linknet - Website
+# Forestal - Website
 
-Este proyecto es un sitio web para **Linknet**, un proveedor de servicios de internet en Temuco y Rucahue. 
+Este proyecto es un sitio web para una forestal
 
 ## Descripción
 
