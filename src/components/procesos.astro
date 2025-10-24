@@ -1,30 +1,41 @@
 ---
+// Información de la alianza y beneficios (claves i18n)
+const alianzaInfo = {
+  descripcionKey: "alliance_description",
+  objetivoTituloKey: "alliance_objective_title",
+  objetivoTextoKey: "alliance_objective_text",
+  puntosClaveTituloKey: "alliance_points_title",
+  puntosClave: [
+    "alliance_point_logistics",
+    "alliance_point_supply",
+    "alliance_point_optimization",
+    "alliance_point_sustainability"
+  ],
+  beneficiosTituloKey: "alliance_benefits_title",
+  beneficios: [
+    "alliance_benefit_efficiency",
+    "alliance_benefit_expansion",
+    "alliance_benefit_reputation",
+    "alliance_benefit_service"
+  ],
+  // Nuevas claves para Misión y Visión de Alatfal
+  misionTituloKey: "alatfal_mission_title",
+  misionTextoKey: "alatfal_mission_text",
+  visionTituloKey: "alatfal_vision_title",
+  visionTextoKey: "alatfal_vision_text",
+  // ---
+  contactoCorreo: "Edgardo@empresasmc.cl",
+  contactoTelefono: "9 33732175"
+};
 
-const procesos = [
-  {
-    tituloKey: "process_sawing_title",
-    descripcionKey: "process_sawing_text",
-    img: "/images/aserrado.jpg" 
-  },
-  {
-    tituloKey: "process_drying_title",
-    descripcionKey: "process_drying_text",
-    img: "/images/secado.jpg" 
-  },
-  {
-    tituloKey: "process_remanufacturing_title",
-    descripcionKey: "process_remanufacturing_text",
-    img: "/images/remanufactura.jpg" 
-  },
-];
-
+// Logos existentes
 const logos = [
   {
     src: "/images/iconof.jpg",
     alt: "Logo Canahuatexport"
   },
   {
-    src: "/images/logo1.jpg", 
+    src: "/images/logo1.jpg",
     alt: "Logo Canahuate Transportes"
   },
   {
@@ -34,36 +45,108 @@ const logos = [
 ];
 ---
 
-<section id="procesos" class="bg-white py-16 md:py-24">
-  <div class="max-w-7xl mx-auto px-6 text-center">
-    
-    <div class="scroll-animate-item">
-      <h2 class="text-3xl md:text-4xl font-bold font-sans text-brand-secondary uppercase" data-i18n="processes_title">
-        Procesos Productivos
+<section id="alianzas" class="bg-gradient-to-br from-brand-secondary to-brand-primary py-16 md:py-24 text-white">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="scroll-animate-item mb-12 text-center">
+      <h2 class="text-4xl md:text-5xl font-extrabold font-sans uppercase tracking-wide">
+        <span data-i18n="alliance_title">Alianzas Estratégicas</span>
       </h2>
     </div>
 
-    <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-16">
-      {
-        procesos.map((proceso, index) => (
-          <div class="scroll-animate-item text-center" style={`--animation-delay: ${index * 0.2}s;`}>
-            <img 
-              src={proceso.img} 
-              alt={proceso.tituloKey} 
-              class="w-48 h-48 rounded-full object-cover mx-auto shadow-lg border-4 border-white" 
-            />
-            <h3 class="mt-6 text-2xl font-bold font-sans text-brand-secondary" data-i18n={proceso.tituloKey}>
-              {/* El texto será llenado por el script */}
-            </h3>
-            <p class="mt-4 text-gray-600 font-serif leading-relaxed" data-i18n={proceso.descripcionKey}>
-              {/* El texto será llenado por el script */}
+    <div class="scroll-animate-item flex flex-col md:flex-row items-center gap-8 md:gap-12 mb-16 md:mb-24">
+       <div class="md:w-1/2">
+         <p class="text-lg md:text-xl font-serif leading-relaxed opacity-90 text-center md:text-left">
+           <span data-i18n={alianzaInfo.descripcionKey}></span>
+         </p>
+       </div>
+       <div class="md:w-1/2">
+         <img
+           src="/images/transportesasfatal.jpg"
+           alt="Camión de Transportes Alatfal"
+           class="rounded-lg shadow-xl w-full h-auto max-h-80 object-cover"
+         />
+       </div>
+    </div>
+
+    <div class="scroll-animate-item my-16 md:my-24 text-center">
+      <h3 class="text-3xl md:text-4xl font-bold font-sans mb-12 uppercase">
+        <span data-i18n={alianzaInfo.puntosClaveTituloKey}>Puntos Clave de la Colaboración</span>
+      </h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 justify-items-center">
+        {alianzaInfo.puntosClave.map((puntoKey, index) => (
+          <div class="flex flex-col items-center justify-center w-56 h-56 md:w-64 md:h-64 rounded-full
+                      bg-gradient-to-br from-brand-accent to-red-700 shadow-xl
+                      hover:scale-105 transition-transform duration-300 transform-gpu p-4 text-center group"
+               style={`--animation-delay: ${index * 0.15}s;`}>
+            <p class="text-lg md:text-xl font-bold font-sans text-white" data-i18n={puntoKey}>
+              {/* Texto llenado por i18n */}
             </p>
           </div>
-        ))
-      }
+        ))}
+      </div>
     </div>
+
+    {/* --- SECCIÓN DEL CUADRO DE OBJETIVO/BENEFICIOS/MISIÓN/VISIÓN (MODIFICADA) --- */}
+    <div class="scroll-animate-item bg-brand-secondary p-8 md:p-12 rounded-lg shadow-2xl text-gray-200 mt-16 md:mt-24 backdrop-blur-sm bg-opacity-80">
+      <div class="grid md:grid-cols-2 gap-8 md:gap-12 mb-10">
+        {/* Columna Objetivo */}
+        <div>
+          <h3 class="text-xl font-bold font-sans text-white mb-4 inline-block">
+             <span class="bg-brand-accent px-3 py-1 rounded" data-i18n={alianzaInfo.objetivoTituloKey}>Objetivo del Vínculo</span>
+          </h3>
+          <p class="text-lg font-serif leading-relaxed text-left mt-2">
+            <span data-i18n={alianzaInfo.objetivoTextoKey}></span>
+          </p>
+        </div>
+        {/* Columna Beneficios */}
+         <div>
+             <h3 class="text-xl font-bold font-sans text-white mb-4 inline-block">
+                 <span class="bg-brand-accent px-3 py-1 rounded" data-i18n={alianzaInfo.beneficiosTituloKey}>Beneficios del Vínculo</span>
+             </h3>
+             <ul class="list-disc list-inside space-y-2 text-lg font-serif text-left marker:text-brand-accent mt-2">
+                 {alianzaInfo.beneficios.map(beneficioKey => (
+                     <li data-i18n={beneficioKey}></li>
+                 ))}
+             </ul>
+         </div>
+      </div>
+
+      {/* --- Nueva Sección para Misión y Visión de Alatfal --- */}
+      <div class="mt-10 pt-10 border-t border-gray-700 grid md:grid-cols-2 gap-8 md:gap-12">
+         {/* Columna Misión Alatfal */}
+         <div>
+             <h3 class="text-xl font-bold font-sans text-white mb-4 inline-block">
+                 <span class="bg-brand-accent px-3 py-1 rounded">🚛 <span data-i18n={alianzaInfo.misionTituloKey}>Misión</span></span> {/* Añadido emoji */}
+             </h3>
+             <p class="text-lg font-serif leading-relaxed text-left mt-2">
+                 <span data-i18n={alianzaInfo.misionTextoKey}></span>
+             </p>
+         </div>
+         {/* Columna Visión Alatfal */}
+         <div>
+             <h3 class="text-xl font-bold font-sans text-white mb-4 inline-block">
+                 <span class="bg-brand-accent px-3 py-1 rounded">🌱 <span data-i18n={alianzaInfo.visionTituloKey}>Visión</span></span> {/* Añadido emoji */}
+             </h3>
+             <p class="text-lg font-serif leading-relaxed text-left mt-2">
+                 <span data-i18n={alianzaInfo.visionTextoKey}></span>
+             </p>
+         </div>
+      </div>
+      {/* --- Fin Sección Misión y Visión --- */}
+
+
+       <div class="mt-10 pt-6 border-t border-gray-700 text-center">
+         <p class="text-gray-300 font-serif text-lg"><strong data-i18n="contact_word" class="text-white">Contacto</strong>:
+           <a href={`mailto:${alianzaInfo.contactoCorreo}`} class="text-brand-accent hover:underline ml-2">{alianzaInfo.contactoCorreo}</a>
+           <span class="mx-3 text-gray-500">|</span>
+           <a href={`tel:+56${alianzaInfo.contactoTelefono.replace(/\s/g, '')}`} class="text-brand-accent hover:underline">{alianzaInfo.contactoTelefono}</a>
+         </p>
+       </div>
+    </div>
+    {/* --- FIN SECCIÓN DEL CUADRO --- */}
   </div>
 </section>
+
 
 <div class="border-t border-gray-200 max-w-7xl mx-auto"></div>
 
@@ -72,10 +155,10 @@ const logos = [
     <div class="flex flex-wrap items-center justify-center gap-x-16 gap-y-10 md:justify-around">
       {
         logos.map(logo => (
-          <img 
-            src={logo.src} 
-            alt={logo.alt} 
-            class="h-16 md:h-20 duration-300"
+          <img
+            src={logo.src}
+            alt={logo.alt}
+            class="h-16 md:h-20 duration-300 grayscale hover:grayscale-0"
           />
         ))
       }
