@@ -16,7 +16,9 @@
     "i18next": "^25.6.0",
     "i18next-browser-languagedetector": "^8.2.0",
     "i18next-http-backend": "^3.0.2",
-    "lucide-static": "^0.487.0"
+    "lucide-static": "^0.487.0",
+    "nodemailer": "^7.0.10",
+    "resend": "^6.2.2"
   },
   "description": "Este proyecto es un sitio web para **Linknet**, un proveedor de servicios de internet en Temuco y Rucahue.",
   "version": "1.0.0",

@@ -1,12 +1,15 @@
 ---
-// La información que no cambia con el idioma se mantiene aquí.
+
 const info = {
   telefonos: ["+56 9 9991 3752"],
   direccion: "Los Diaguitas 770 - Freire - Araucanía, Chile",
-  emailGeneral: "mauricio@empresasmc.cl", 
-  emailCadena: "cadena@canahuatexport.cl",
-  emailDestinoFormulario: "mauricio@empresasmc.cl" 
+  emailGeneral: "mauricio@empresasmc.cl",
+  emailCadena: "cadena@canahuatexport.cl"
 }
+
+
+const formspreeEndpoint = "https://formspree.io/f/xkgpwoej"; 
+
 ---
 
 <section
@@ -26,8 +29,11 @@ const info = {
 
     <div class="grid md:grid-cols-2 gap-12 items-start">
 
-      {/* --- FORMULARIO CON MAILTO: --- */}
-      <form id="contact-form" class="space-y-6">
+     
+      <form action={formspreeEndpoint} method="POST" class="space-y-6">
+       
+        <input type="hidden" name="_next" value="/" />
+
         <div>
           <label for="name" class="sr-only">Su nombre</label>
           <input type="text" id="name" name="name" placeholder="Su nombre *" required class="w-full bg-white/90 text-gray-800 p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-accent font-serif" data-i18n="contact_form_name" />
@@ -40,21 +46,19 @@ const info = {
           <label for="message" class="sr-only">Mensaje</label>
           <textarea id="message" name="message" rows="5" placeholder="Mensaje *" required class="w-full bg-white/90 text-gray-800 p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-accent font-serif" data-i18n="contact_form_message"></textarea>
         </div>
-        {/* Mensaje de estado */}
-        <div id="form-status" class="text-center font-bold hidden"></div>
         <div>
           <button type="submit" class="w-full bg-brand-accent text-white font-bold py-3 px-6 rounded-md hover:bg-red-700 transition-colors font-sans text-lg" data-i18n="contact_form_button">
             Enviar Mensaje
           </button>
         </div>
       </form>
-    
+      
 
 
+   
       <div class="bg-black/50 p-8 rounded-lg backdrop-blur-sm">
         <h3 class="text-2xl font-bold font-sans mb-8" data-i18n="contact_info_title">Información de contacto</h3>
         <div class="space-y-6">
-
           <div>
             <h4 class="text-md font-sans inline-block mb-2">
               <span class="bg-brand-accent px-2 py-1" data-i18n="contact_info_phones">Teléfonos</span>
@@ -63,74 +67,21 @@ const info = {
               <p class="font-serif text-gray-200">{tel}</p>
             ))}
           </div>
-
           <div>
             <h4 class="text-md font-sans inline-block mb-2">
               <span class="bg-brand-accent px-2 py-1" data-i18n="contact_info_address">Dirección</span>
             </h4>
             <p class="font-serif text-gray-200">{info.direccion}</p>
           </div>
-
           <div>
             <h4 class="text-md font-sans inline-block mb-2">
               <span class="bg-brand-accent px-2 py-1" data-i18n="contact_info_general">Contacto general</span>
             </h4>
-          
             <a href={`mailto:${info.emailGeneral}`} class="font-serif text-gray-200 hover:text-brand-accent transition-colors block">{info.emailGeneral}</a>
           </div>
-
         </div>
       </div>
     </div>
   </div>
 </section>
 
-
-<script define:vars={{ recipientEmail: info.emailDestinoFormulario }}>
-  const form = document.getElementById('contact-form');
-  const statusDiv = document.getElementById('form-status');
-
-  form.addEventListener('submit', function(event) {
-    event.preventDefault(); 
-
-    const name = form.elements.name.value.trim();
-    const email = form.elements.email.value.trim();
-    const message = form.elements.message.value.trim();
-
-    if (!name || !email || !message) {
-      statusDiv.textContent = 'Por favor, completa todos los campos requeridos.';
-      statusDiv.className = 'text-center font-bold text-yellow-400 p-2 bg-yellow-900 bg-opacity-50 rounded'; 
-      statusDiv.classList.remove('hidden');
-      return; 
-    }
-
-    const subject = encodeURIComponent(`Mensaje de ${name} desde Canahuatexport`);
-    const body = encodeURIComponent(
-      `Nombre: ${name}\n` +
-      `Correo: ${email}\n\n` +
-      `Mensaje:\n${message}`
-    );
-
- 
-    const mailtoLink = `mailto:${recipientEmail}?subject=${subject}&body=${body}`;
-
-    
-    try {
-      window.location.href = mailtoLink;
-      statusDiv.textContent = 'Abriendo tu cliente de correo... Por favor, envía el mensaje desde allí.';
-      statusDiv.className = 'text-center font-bold text-green-400 p-2 bg-green-900 bg-opacity-50 rounded'; 
-      statusDiv.classList.remove('hidden');
-      form.reset(); // Limpia el formulario
-    } catch (e) {
-      console.error("Error al intentar abrir mailto:", e);
-      statusDiv.textContent = 'Error al intentar abrir tu cliente de correo. Copia la información manualmente.';
-      statusDiv.className = 'text-center font-bold text-red-400 p-2 bg-red-900 bg-opacity-50 rounded';
-      statusDiv.classList.remove('hidden');
-    }
-
-    
-    setTimeout(() => {
-        statusDiv.classList.add('hidden');
-    }, 8000);
-  });
-</script>
