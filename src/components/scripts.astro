@@ -12,7 +12,7 @@
     let currentIndex = 0;
     let interval;
 
-    // --- Funciones del carrusel ---
+   
     function updateCarousel() {
       track.style.transform = `translateX(-${currentIndex * 100}%)`;
       updateDots();
@@ -30,7 +30,7 @@
       resetInterval();
     }
 
-    // --- Lógica de los puntos de navegación ---
+    
     function createDots() {
       for (let i = 0; i < totalSlides; i++) {
         const dot = document.createElement("button");
@@ -57,7 +57,7 @@
       });
     }
 
-    // --- Intervalo de auto-desplazamiento ---
+    
     function startInterval() {
       interval = setInterval(nextSlide, 7000);
     }
@@ -67,12 +67,12 @@
       startInterval();
     }
 
-    // --- Inicialización ---
+   
     nextBtn.addEventListener("click", nextSlide);
     prevBtn.addEventListener("click", prevSlide);
     
     createDots();
-    updateCarousel(); // Llama para establecer el estado inicial
+    updateCarousel(); 
     startInterval();
   });
 </script>

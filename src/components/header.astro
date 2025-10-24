@@ -3,23 +3,90 @@
     --header-height-initial: 112px;
     --header-height-shrink: 72px;
     --color-primary: #4a4a4a;
-    --color-secondary: #333333;
-    --color-accent: #d93644;
-    --color-text: #ffffff;
+    --color-secondary: #333333; 
+    --color-accent: #d93644;   
+    --color-text: #ffffff;     
   }
   #main-header { background-color: var(--color-primary); transition: background-color 0.3s; }
   #header-inner { height: var(--header-height-initial); transition: height 0.3s; }
   #header-logo { height: 80px; transition: height 0.3s; }
+
+
   .header-link { color: var(--color-text); transition: color 0.2s; }
   .header-link:hover { color: var(--color-accent); }
+
+
   .header-shrink #header-inner { height: var(--header-height-shrink); }
   .header-shrink #header-logo { height: 56px; }
-  .header-shrink { background-color: var(--color-secondary); }
-  #mobile-nav { display: none; position: fixed; top: 0; right: 0; width: 80%; max-width: 320px; height: 100vh; background-color: #fff; z-index: 100; flex-direction: column; padding: 6rem 2rem 2rem; box-shadow: -4px 0 15px rgba(0,0,0,0.2); animation: slide-in-right 0.3s ease-out; }
-  #mobile-nav.open { display: flex; }
-  #mobile-nav .header-link { color: #2c2c2c !important; font-weight: 700; font-size: 1.125rem; padding: 1rem 0; width: 100%; }
-  .mobile-menu-btn { z-index: 110; border: 2px solid var(--color-accent); border-radius: 8px; padding: 0.5rem; color: var(--color-accent); }
-  @keyframes slide-in-right { from { transform: translateX(100%); } to { transform: translateX(0); } }
+  .header-shrink { background-color: var(--color-secondary); box-shadow: 0 2px 10px rgba(0,0,0,0.1); } 
+
+ 
+  #mobile-nav {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 80%;
+    max-width: 300px; 
+    height: 100vh;
+    background-color: var(--color-secondary); 
+    z-index: 100;
+    flex-direction: column;
+    padding: 7rem 2rem 2rem; 
+    box-shadow: -5px 0 20px rgba(0,0,0,0.3);
+    animation: slide-in-right 0.3s ease-out;
+    opacity: 0; 
+    transform: translateX(100%); 
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+  }
+
+  #mobile-nav.open {
+    display: flex;
+    opacity: 1; 
+    transform: translateX(0); 
+  }
+
+  /* Links Menú Móvil */
+  #mobile-nav .mobile-header-link { 
+    color: var(--color-text); 
+    font-weight: 700;
+    font-size: 1.25rem; 
+    padding: 0.8rem 0; 
+    width: 100%;
+    display: block;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+    transition: color 0.2s, background-color 0.2s; 
+  }
+   #mobile-nav .mobile-header-link:hover,
+   #mobile-nav .mobile-header-link:focus { 
+     color: var(--color-accent); 
+     background-color: rgba(255, 255, 255, 0.05); 
+   }
+   #mobile-nav ul li:last-child .mobile-header-link {
+       border-bottom: none; 
+   }
+
+
+ 
+  .mobile-menu-btn {
+    z-index: 110; 
+    border: none; 
+    background: none; 
+    padding: 0.5rem;
+    color: var(--color-text); 
+    position: relative; 
+  }
+  
+   #mobile-nav.open + .mobile-menu-btn { 
+     color: var(--color-accent); 
+   }
+
+
+  @keyframes slide-in-right {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+  
 </style>
 
 <header id="main-header" class="fixed top-0 left-0 w-full z-50">
@@ -34,7 +101,7 @@
         <li><a href="#inicio" class="header-link" data-i18n="nav_servicios">Servicios</a></li>
         <li><a href="#productos" class="header-link" data-i18n="nav_productos">Productos</a></li>
         <li><a href="#empresa" class="header-link" data-i18n="nav_empresa">Empresa</a></li>
-        <li><a href="#procesos" class="header-link" data-i18n="nav_procesos">Procesos</a></li>
+        <li><a href="#alianzas" class="header-link" data-i18n="nav_procesos">Alianza</a></li> 
         <li><a href="#contacto" class="header-link" data-i18n="nav_contacto">Contacto</a></li>
       </ul>
     </nav>
@@ -44,36 +111,41 @@
         <span id="lang-text">ES</span>
       </button>
     </div>
+    
     <div class="md:hidden flex-1 flex justify-end">
         <button id="mobile-menu-btn" class="mobile-menu-btn">
-          <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-          <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+          <svg id="menu-icon-open" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+          <svg id="menu-icon-close" class="w-7 h-7 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
         </button>
     </div>
   </div>
+
+ 
   <nav id="mobile-nav" class="md:hidden">
-    <ul class="flex flex-col space-y-4">
-        <li><a href="#servicios" class="header-link" data-i18n="nav_servicios">Servicios</a></li>
-        <li><a href="#productos" class="header-link" data-i18n="nav_productos">Productos</a></li>
-        <li><a href="#empresa" class="header-link" data-i18n="nav_empresa">Empresa</a></li>
-        <li><a href="#procesos" class="header-link" data-i18n="nav_procesos">Procesos</a></li>
-        <li><a href="#contacto" class="header-link" data-i18n="nav_contacto">Contacto</a></li>
+    <ul class="flex flex-col w-full">
+       
+        <li><a href="#inicio" class="mobile-header-link" data-i18n="nav_servicios">Servicios</a></li>
+        <li><a href="#productos" class="mobile-header-link" data-i18n="nav_productos">Productos</a></li>
+        <li><a href="#empresa" class="mobile-header-link" data-i18n="nav_empresa">Empresa</a></li>
+        <li><a href="#alianzas" class="mobile-header-link" data-i18n="nav_procesos">Alianza</a></li> 
+        <li><a href="#contacto" class="mobile-header-link" data-i18n="nav_contacto">Contacto</a></li>
     </ul>
-     <button id="lang-toggle-mobile" class="flex items-center gap-2 mt-8">
+     <button id="lang-toggle-mobile" class="flex items-center gap-2 mt-auto pt-4 border-t border-gray-700 w-full"> 
         <img id="lang-flag-mobile" src="/images/es.png" alt="Bandera de idioma" class="w-6 h-6" />
-        <span id="lang-text-mobile" class="text-gray-800 font-bold">ES</span>
+        <span id="lang-text-mobile" class="text-white font-bold">ES</span> 
       </button>
   </nav>
 </header>
 
 <script is:inline>
-  // Script ÚNICAMENTE para el funcionamiento del Header (scroll y menú móvil)
   document.addEventListener('DOMContentLoaded', () => {
     const header = document.getElementById('main-header');
     const menuBtn = document.getElementById('mobile-menu-btn');
     const mobileNav = document.getElementById('mobile-nav');
     const iconOpen = document.getElementById('menu-icon-open');
     const iconClose = document.getElementById('menu-icon-close');
+
+   
     window.addEventListener('scroll', () => {
       if (window.scrollY > 50) {
         header.classList.add('header-shrink');
@@ -81,17 +153,50 @@
         header.classList.remove('header-shrink');
       }
     });
-    menuBtn.addEventListener('click', () => {
-      mobileNav.classList.toggle('open');
+
+    
+    menuBtn.addEventListener('click', (e) => {
+      e.stopPropagation(); 
+      const isOpen = mobileNav.classList.contains('open');
+      if (isOpen) {
+         
+         mobileNav.style.opacity = '0';
+         mobileNav.style.transform = 'translateX(100%)';
+         
+         setTimeout(() => {
+             mobileNav.classList.remove('open');
+             
+             mobileNav.style.opacity = '';
+             mobileNav.style.transform = '';
+         }, 300); 
+      } else {
+        mobileNav.classList.add('open');
+        
+      }
       iconOpen.classList.toggle('hidden');
       iconClose.classList.toggle('hidden');
     });
+
+   
     mobileNav.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
-        mobileNav.classList.remove('open');
-        iconOpen.classList.remove('hidden');
-        iconClose.classList.add('hidden');
+        mobileNav.style.opacity = '0';
+        mobileNav.style.transform = 'translateX(100%)';
+        setTimeout(() => {
+            mobileNav.classList.remove('open');
+            mobileNav.style.opacity = '';
+            mobileNav.style.transform = '';
+            iconOpen.classList.remove('hidden'); 
+            iconClose.classList.add('hidden'); 
+        }, 300);
       });
     });
+
+     
+     document.addEventListener('click', (e) => {
+         if (mobileNav.classList.contains('open') && !mobileNav.contains(e.target) && e.target !== menuBtn && !menuBtn.contains(e.target)) {
+             menuBtn.click(); 
+         }
+     });
   });
 </script>

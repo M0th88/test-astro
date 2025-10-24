@@ -1,5 +1,5 @@
 ---
-// Información de la alianza y beneficios (claves i18n)
+
 const alianzaInfo = {
   descripcionKey: "alliance_description",
   objetivoTituloKey: "alliance_objective_title",
@@ -18,7 +18,7 @@ const alianzaInfo = {
     "alliance_benefit_reputation",
     "alliance_benefit_service"
   ],
-  // Nuevas claves para Misión y Visión de Alatfal
+  
   misionTituloKey: "alatfal_mission_title",
   misionTextoKey: "alatfal_mission_text",
   visionTituloKey: "alatfal_vision_title",
@@ -28,7 +28,7 @@ const alianzaInfo = {
   contactoTelefono: "9 33732175"
 };
 
-// Logos existentes
+
 const logos = [
   {
     src: "/images/iconof.jpg",
@@ -79,17 +79,17 @@ const logos = [
                       hover:scale-105 transition-transform duration-300 transform-gpu p-4 text-center group"
                style={`--animation-delay: ${index * 0.15}s;`}>
             <p class="text-lg md:text-xl font-bold font-sans text-white" data-i18n={puntoKey}>
-              {/* Texto llenado por i18n */}
+              
             </p>
           </div>
         ))}
       </div>
     </div>
 
-    {/* --- SECCIÓN DEL CUADRO DE OBJETIVO/BENEFICIOS/MISIÓN/VISIÓN (MODIFICADA) --- */}
+    
     <div class="scroll-animate-item bg-brand-secondary p-8 md:p-12 rounded-lg shadow-2xl text-gray-200 mt-16 md:mt-24 backdrop-blur-sm bg-opacity-80">
       <div class="grid md:grid-cols-2 gap-8 md:gap-12 mb-10">
-        {/* Columna Objetivo */}
+      
         <div>
           <h3 class="text-xl font-bold font-sans text-white mb-4 inline-block">
              <span class="bg-brand-accent px-3 py-1 rounded" data-i18n={alianzaInfo.objetivoTituloKey}>Objetivo del Vínculo</span>
@@ -98,7 +98,7 @@ const logos = [
             <span data-i18n={alianzaInfo.objetivoTextoKey}></span>
           </p>
         </div>
-        {/* Columna Beneficios */}
+        
          <div>
              <h3 class="text-xl font-bold font-sans text-white mb-4 inline-block">
                  <span class="bg-brand-accent px-3 py-1 rounded" data-i18n={alianzaInfo.beneficiosTituloKey}>Beneficios del Vínculo</span>
@@ -111,9 +111,9 @@ const logos = [
          </div>
       </div>
 
-      {/* --- Nueva Sección para Misión y Visión de Alatfal --- */}
+      
       <div class="mt-10 pt-10 border-t border-gray-700 grid md:grid-cols-2 gap-8 md:gap-12">
-         {/* Columna Misión Alatfal */}
+        
          <div>
              <h3 class="text-xl font-bold font-sans text-white mb-4 inline-block">
                  <span class="bg-brand-accent px-3 py-1 rounded">🚛 <span data-i18n={alianzaInfo.misionTituloKey}>Misión</span></span> {/* Añadido emoji */}
@@ -122,7 +122,7 @@ const logos = [
                  <span data-i18n={alianzaInfo.misionTextoKey}></span>
              </p>
          </div>
-         {/* Columna Visión Alatfal */}
+       
          <div>
              <h3 class="text-xl font-bold font-sans text-white mb-4 inline-block">
                  <span class="bg-brand-accent px-3 py-1 rounded">🌱 <span data-i18n={alianzaInfo.visionTituloKey}>Visión</span></span> {/* Añadido emoji */}
@@ -132,7 +132,7 @@ const logos = [
              </p>
          </div>
       </div>
-      {/* --- Fin Sección Misión y Visión --- */}
+      
 
 
        <div class="mt-10 pt-6 border-t border-gray-700 text-center">
@@ -143,25 +143,8 @@ const logos = [
          </p>
        </div>
     </div>
-    {/* --- FIN SECCIÓN DEL CUADRO --- */}
+    
   </div>
 </section>
 
 
-<div class="border-t border-gray-200 max-w-7xl mx-auto"></div>
-
-<section class="bg-white py-16 md:py-20">
-  <div class="max-w-5xl mx-auto px-6 scroll-animate-item">
-    <div class="flex flex-wrap items-center justify-center gap-x-16 gap-y-10 md:justify-around">
-      {
-        logos.map(logo => (
-          <img
-            src={logo.src}
-            alt={logo.alt}
-            class="h-16 md:h-20 duration-300 grayscale hover:grayscale-0"
-          />
-        ))
-      }
-    </div>
-  </div>
-</section>

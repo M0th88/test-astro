@@ -1,12 +1,18 @@
-<section id="inicio" class="relative w-full h-screen overflow-hidden mt-[-80px] md:mt-[-128px]">
+<section
+  id="inicio"
+  class="relative w-full h-screen overflow-hidden"
+  style="padding-top: 112px;" 
+>
+ 
   <div class="overflow-hidden w-full h-full">
     <div
       id="carousel-track"
       class="flex w-full h-full transition-transform duration-700 ease-in-out"
     >
+     
       <div class="w-full h-full flex-shrink-0 relative">
         <img
-          src="/images/astilla.jpeg" 
+          src="/images/astilla.jpeg"
           class="w-full h-full object-cover object-center"
           alt="Biomasa forestal de alta calidad"
         />
@@ -22,11 +28,12 @@
         </div>
       </div>
 
+    
       <div class="w-full h-full flex-shrink-0 relative">
-        <img 
-          src="/images/aserrin.jpeg" 
-          class="w-full h-full object-cover object-center" 
-          alt="Maderas de calidad" 
+        <img
+          src="/images/aserrin.jpeg"
+          class="w-full h-full object-cover object-center"
+          alt="Maderas de calidad"
         />
         <div class="absolute inset-0 bg-black/40"></div>
         <div class="absolute inset-0 flex flex-col items-center justify-center text-center text-white p-8">
@@ -40,6 +47,7 @@
         </div>
       </div>
 
+     
       <div class="w-full h-full flex-shrink-0 relative">
         <img
           src="/images/corteza.jpeg"
@@ -57,7 +65,6 @@
     </div>
   </div>
 
-  {/* Controles y Puntos */}
   <button id="prevBtn" class="absolute left-4 top-1/2 -translate-y-1/2 text-white p-2 z-10">
     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
   </button>
@@ -67,6 +74,7 @@
   <div id="carousel-dots" class="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3 z-10">
   </div>
 </section>
+
 
 <style>
   @keyframes fade-in-down {

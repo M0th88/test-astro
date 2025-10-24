@@ -1,43 +1,44 @@
 ---
 import ProductModal from './ProductModal.astro';
 
-// El array ahora contiene las CLAVES de traducción
+
 const productos = [
   {
     id: 'astilla-industrial',
     nombreKey: "product_industrial_chip_name",
     descripcionKey: "product_industrial_chip_desc",
-    img: "/images/corteza.jpeg",
+    img: "/images/corteza.jpeg", //
     detallesKey: "product_industrial_chip_details"
   },
   {
     id: 'aserrin-seco',
     nombreKey: "product_dry_sawdust_name",
     descripcionKey: "product_dry_sawdust_desc",
-    img: "/images/aserrin.jpeg",
+    img: "/images/aserrin.jpeg", //
     detallesKey: "product_dry_sawdust_details"
   },
   {
     id: 'corteza-pino',
     nombreKey: "product_pine_bark_name",
     descripcionKey: "product_pine_bark_desc",
-    img: "/images/cortezadepino.jpeg",
+    img: "/images/cortezadepino.jpeg", //
     detallesKey: "product_pine_bark_details"
   },
   {
     id: 'astilla-energia',
     nombreKey: "product_energy_chip_name",
     descripcionKey: "product_energy_chip_desc",
-    img: "/images/astilla.jpeg",
+    img: "/images/astilla.jpeg", //
     detallesKey: "product_energy_chip_details"
   },
   {
     id: 'viruta-madera',
     nombreKey: "product_wood_shavings_name",
     descripcionKey: "product_wood_shavings_desc",
-    img: "/images/aserrin1.jpeg",
+    img: "/images/aserrin1.jpeg", //
     detallesKey: "product_wood_shavings_details"
   },
+ 
   // {
   //   id: 'chip-uniforme',
   //   nombreKey: "product_uniform_chip_name",
@@ -66,23 +67,24 @@ const productos = [
       </p>
     </div>
 
-    <div class="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    
+    <div class="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:flex lg:flex-wrap lg:justify-center gap-8">
+  
       {
         productos.map((producto, index) => (
           <div
-            class="product-card bg-white rounded-lg shadow-md overflow-hidden relative cursor-pointer group flex flex-col scroll-animate-item"
+            class="product-card bg-white rounded-lg shadow-md overflow-hidden relative cursor-pointer group flex flex-col scroll-animate-item
+                   lg:w-[calc(33.333%-1.334rem)]" 
             style={`--animation-delay: ${index * 0.1}s;`}
             data-modal-trigger-for={producto.id}
           >
             <div class="relative w-full h-56 flex-shrink-0">
-              {/* Usamos nombreKey para el alt, i18next no traduce atributos alt directamente */}
               <img src={producto.img} alt={producto.nombreKey} class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" />
             </div>
             <div class="absolute inset-0 bg-brand-accent bg-opacity-80 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
             </div>
-            <div class="p-6 text-left relative z-10 bg-white transition-colors duration-300 group-hover:bg-transparent">
-              {/* Añadimos data-i18n a los textos */}
+            <div class="p-6 text-left relative z-10 bg-white transition-colors duration-300 group-hover:bg-transparent flex-grow"> 
               <h3 class="text-xl font-bold font-sans text-brand-secondary transition-colors duration-300 group-hover:text-white" data-i18n={producto.nombreKey}></h3>
               <p class="mt-1 text-gray-500 font-serif transition-colors duration-300 group-hover:text-white" data-i18n={producto.descripcionKey}></p>
             </div>
@@ -90,21 +92,21 @@ const productos = [
         ))
       }
     </div>
+   
   </div>
 </section>
 
-{/* Pasamos el objeto 'producto' completo al modal */}
+
 {
   productos.map((producto) => (
     <ProductModal product={producto} />
   ))
 }
 
-{/* El script para abrir/cerrar modales no necesita cambios */}
+
 <script is:inline>
   document.addEventListener('DOMContentLoaded', () => {
     const productCards = document.querySelectorAll('[data-modal-trigger-for]');
-    
     productCards.forEach(card => {
       card.addEventListener('click', () => {
         const productId = card.getAttribute('data-modal-trigger-for');
@@ -115,17 +117,16 @@ const productos = [
     function openModal(productId) {
       const modal = document.getElementById(`modal-${productId}`);
       if (!modal) return;
-      
+
       const modalContent = modal.querySelector('.modal-content');
-      
       document.body.style.overflow = 'hidden';
       modal.classList.remove('invisible', 'opacity-0');
       setTimeout(() => modalContent.classList.remove('opacity-0', 'scale-95'), 50);
-      
+
       modal.addEventListener('click', () => closeModal(productId));
       modal.querySelectorAll('.modal-close-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
-            e.stopPropagation(); // Evita que el click en el botón cierre también por el overlay
+            e.stopPropagation();
             closeModal(productId);
         });
       });
@@ -134,7 +135,6 @@ const productos = [
     function closeModal(productId) {
       const modal = document.getElementById(`modal-${productId}`);
       if (!modal) return;
-
       const modalContent = modal.querySelector('.modal-content');
       modalContent.classList.add('opacity-0', 'scale-95');
       setTimeout(() => {

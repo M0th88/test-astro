@@ -49,5 +49,5 @@ async function initializeI18next() {
   i18next.on('languageChanged', updateContent);
 }
 
-// Inicia todo el motor de traducción.
+
 initializeI18next();
